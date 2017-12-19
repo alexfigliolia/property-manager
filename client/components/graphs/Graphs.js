@@ -16,9 +16,7 @@ export default class Graphs extends Component {
     return (
     	<div 
 				className="circ-section-container"
-				style={{
-          maxWidth: `${this.props.height - 100}px`
-        }}>
+				style={{ maxWidth: `${this.props.height - 100}px`}}>
 				<div 
   				className='circ-section'>
           <RentCircle

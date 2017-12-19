@@ -48,7 +48,66 @@ Meteor.methods({
 		} else {
 			return true;
 		}
-	}
+	},
+
+	'issues.create'(id, prop, obj){
+    check(id, String);
+    check(prop, String);
+    check(obj, Object);
+    return Issues.insert({
+      propId: id,
+      property: prop,
+      issue: obj.issue,
+      date: new Date(),
+      images: obj.images,
+      postedBy: Meteor.user().name,
+      solved: obj.solved,
+      solution: {
+        completed: obj.solution.completed,
+        description: obj.solution.description,
+        products: obj.solution.products,
+        budget: obj.solution.budget,
+        spent: obj.solution.spent,
+        postedBy: Meteor.user().name
+      }
+    });
+  },
+
+  'issue.postSolution'(id, solution) {
+    check(id, String);
+    check(solution.budget, Number);
+    return Issues.update({ _id: id }, {
+      $set: {
+        solved: true,
+        'solution.description': solution.description,
+        'solution.products': solution.products,
+        'solution.budget': solution.budget,
+        'solution.postedBy': Meteor.user().name
+      }
+    });
+  },
+
+  'issue.markComplete'(id, amt) {
+    check(id, String);
+    check(amt, Number);
+    return Issues.update({ _id: id }, {
+      $set: {
+        'solution.completed': true,
+        'solution.spent': amt
+      }
+    });
+  },
+
+  'issue.addImage'(id, img) {
+    check(id, String);
+    check(img, String);
+    return Issues.update( { _id: id }, { $push: { images: img } } );
+  },
+
+  'issue.delete'(id) {
+    check(id, String);
+    return Issues.remove({_id: id});
+  },
 
 
 });

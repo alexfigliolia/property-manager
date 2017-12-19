@@ -37,16 +37,16 @@ export default class Dashboard extends Component {
     this.setState({selectedIndex: 0});
   }
 
-  updateSelected = () => {
-    const index = this.flkty.selectedIndex;
-    this.setState({ selectedIndex: index });
-  }
-
   componentWillUnmount = () => {
     if (this.flkty) {
       this.flkty.off('cellSelect', this.updateSelected);
       this.flkty.destroy();
     }
+  }
+
+  updateSelected = () => {
+    const index = this.flkty.selectedIndex;
+    this.setState({ selectedIndex: index });
   }
 
   toggleMenu = () => {

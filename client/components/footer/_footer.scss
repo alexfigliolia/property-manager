@@ -11,10 +11,8 @@
 		flex-direction: column;
 		&>.title-slider {
 			width: 100%;
-			// margin: auto;
 			@include center;
 			height: 70px;
-			// align-items: flex-start;
 			&>.flickity-viewport {
 				@include center;
 				width: 100%;
@@ -27,14 +25,11 @@
 			}
 			& .title {
 				height: 100%;
-				// @include center;
 				width: auto;
 				transform: scale(0.5);
-				// opacity: 0.25;
-				transition-duration: 1.25s;
+				transition-duration: 0.4s;
 				display: table;
 				color: #25375D;
-				// background: green;
 				&>h1 {
 					font-weight: 200;
 					font-size: 2.25em;
@@ -44,7 +39,6 @@
 			}
 			& .title.is-selected {
 				transform: scale(1);
-				opacity: 1;
 				color: #fff;
 
 			}

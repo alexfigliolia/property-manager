@@ -35,3 +35,12 @@ export const checkDate = (date) => {
     return false;
   }
 }
+
+export const getFirstWord = (str) => {
+  const lastInit = str.match(/\b(\w)/g)[1]; 
+  const spacePosition = str.indexOf(' ');
+  if (spacePosition === -1)
+    return str + '' + lastInit;
+  else
+    return str.substr(0, spacePosition) + ' ' + lastInit;
+}

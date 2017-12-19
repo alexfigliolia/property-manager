@@ -10,16 +10,12 @@ export default class Footer extends Component {
   componentDidMount() {
   	const options = {
   		cellSelector: '.title',
-      // setGallerySize: false,
-      // cellAlign: 'center',
-      // contain: true,
       initialIndex: 0,
-      // accessibility: true,
       prevNextButtons: false,
       pageDots: false,
       draggable: false,
-      // selectedAttraction: 0.2,
-      // friction: 0.7
+      selectedAttraction: 0.28,
+      friction: 0.7
   	};
   	setTimeout(() => {
   		this.flkty = new Flickity(this.refs.fs, options);
