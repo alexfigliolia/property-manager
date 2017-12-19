@@ -1,0 +1,114 @@
+.service {
+	position: fixed;
+	top: 50px;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	transform: translateX(100%);
+	transition-duration: 0.3s;
+	&>div {
+		@include center;
+		align-items: flex-start;
+		flex-direction: column;
+		width: 90%;
+		margin: auto;
+		&>h2 {
+			width: 100%;
+			font-weight: 200;
+			font-size: 2em;
+			color: $purple;
+			text-align: center;
+		}
+		&>.service-items {
+			@include center;
+			width: 100%;
+			flex-direction: column;
+		}
+	}
+}
+
+.service-show {
+	transform: translateX(0%);
+}
+
+.service-item {
+	@include center;
+	flex-direction: column;
+	width: 100%;
+	position: relative;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	perspective: 800px;
+	box-sizing: border-box;
+	&>div {
+		width: 100%;
+		height: 100%;
+		@include center;
+		flex-direction: column;
+		border: 1px solid $purple;
+		border-radius: 5px;
+		backface-visibility: hidden;
+		transition-duration: 0.3s;
+		box-sizing: border-box;
+		&>h3 {
+			color: #ADCAFF;
+			font-weight: 200;
+			height: calc(100% - 50px);
+		}
+		&>.buttons {
+			width: 100%;
+			@include center;
+			border-top: 1px solid $purple;
+			height: 50px;
+			&>button {
+				width: 50%; height: 50px;
+				margin: 0; padding: 0;
+				outline: none; border: none;
+				color: #fff;
+				background: transparent;
+				&:first-of-type {
+					border-right: 1px solid $purple;
+					color: $redish;
+				}
+				&:last-of-type {
+					color: $greenish;
+				}
+			}
+		}
+	}
+	&>.front {
+		transform: rotateY(0deg);
+	}
+	&>.back {
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: rotateY(180deg);
+		&>h3 {
+			width: 90%;
+			font-size: 1em;
+			// padding: 10px 0;
+			margin: 0 auto;
+			@include center;
+		}
+		&>div {
+			height: 50px;
+			&>button {
+				height: 50px;
+			}
+		}
+	}
+}
+.service-item-flip {
+	&>.front {
+		pointer-events: none;
+		transform: rotateY(-180deg) translateZ(-2px);
+	}
+	&>.back {
+		transform: rotateY(0deg) translateZ(2px);
+		z-index: 2;
+		@include headerShadow;
+	}
+}
