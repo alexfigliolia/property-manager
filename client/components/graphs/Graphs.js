@@ -10,7 +10,9 @@ export default class Graphs extends Component {
   	super(props);
   }
 
-  componentDidMount = () => this.props.init();
+  componentDidMount = () => {
+    if(this.props.index === this.props.length) setTimeout(this.props.init(), 200);
+  };
 
   render = () => {
     return (

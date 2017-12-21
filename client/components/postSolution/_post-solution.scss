@@ -1,0 +1,216 @@
+.post-solution {
+	position: fixed;
+	top: 50px;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	transform: translateX(100%);
+	transition-duration: 0.3s;
+	z-index: 20;
+	&>div {
+		@include center;
+		flex-direction: column;
+		width: 90%;
+		margin: auto;
+		margin-bottom: 100px;
+		max-width: 600px;
+		&>h2 {
+			color: $purple;
+			font-size: 2em;
+			font-weight: 200;
+			margin-bottom: 10px;
+			@include center;
+			&>div {
+				height: 40px;
+				width: 40px;
+				box-sizing: border-box;
+				border-radius: 50%;
+				background: $greenish;
+				border: 1px solid $greenish;
+				background: url('check-g.svg') no-repeat center;
+				background-size: 25px 25px;
+				margin-right: 15px;
+			}
+		}
+		&>p {
+			font-size: 1.2em;
+			text-align: center;
+			color: $purple;
+			margin-top: 5px;
+			font-weight: 300;
+			widows: 3;
+			&>strong {
+				font-weight: 100;
+				color: $greenish;
+			}
+		}
+		&>.inputs {
+			@include center;
+			flex-direction: column;
+			width: 100%;
+			margin-top: 30px;
+			&>label {
+				color: $greenish;
+				margin-bottom: 5px;
+				font-size: 1.1em;
+				font-weight: 200;
+			}
+			&>textarea {
+				outline: none; border: none;
+				width: 100%; height: 120px;
+				max-width: 100%; min-width: 100%;
+				min-height: 120px; max-height: 120px;
+				background: transparent;
+				border: 1px solid $purple;
+				box-sizing: border-box;
+				margin-bottom: 50px;
+				border-radius: 5px;
+				padding: 5px;
+				color: $purple;
+			}
+			&>fieldset {
+				outline: none; border: none;
+				color: $greenish;
+				margin-bottom: 10px;
+			}
+			&>.checkboxes {
+				@include center;
+				flex-direction: row;
+				margin-bottom: 10px;
+				&>label {
+					color: $greenish;
+					margin-right: 10px;
+					&:last-of-type {
+						color: $redish;
+						margin-left: 20px;
+					}
+				}
+				&>input[type='checkbox'] {
+					-webkit-appearance:none;
+					-moz-appearance: none;
+					-ms-appearance: none;
+					appearance: none;
+					outline: none; border: none;
+					background: transparent;
+					height: 40px; width: 40px;
+					border-radius: 50%;
+					border: 1px solid $purple;
+					position: relative;
+					transition-duration: 0.2s;
+					&::after {
+						content: '';
+						position: absolute;
+						top: calc(50% - 0.5px);
+						left: 20%;
+						height: 1px;
+						width: 60%;
+						background: $redish;
+						transform: rotate(45deg) scaleX(0);
+						transition-duration: 0.2s;
+					}
+					&::before {
+						content: '';
+						position: absolute;
+						top: calc(50% - 0.5px);
+						left: 20%;
+						height: 1px;
+						width: 60%;
+						background: $redish;
+						transform: rotate(-45deg) scaleX(0);
+						transition-duration: 0.2s;
+						transition-delay: 0.2s;
+					}
+					&:first-of-type {
+						margin-right: 20px;
+						&::after,
+						&::before {
+							background: $greenish;
+						}
+					}
+					&:checked {
+						border: 1px solid $greenish;
+						&::after {
+							transform: rotate(45deg) scaleX(1);
+						}
+						&::before {
+							transform: rotate(-45deg) scaleX(1);
+						}
+						&:last-of-type {
+							border: 1px solid $redish;
+						}
+					}
+				}
+			}
+			&>.budg {
+				margin-top: 30px;
+				width: 100%;
+				@include center;
+				flex-direction: column;
+				&>label {
+					color: $redish;
+					margin-bottom: 10px;
+				}
+				&>input {
+					width: 90%; max-width: 400px;
+					padding: 5px; border-radius: 0;
+					outline: none; border: none;
+					background: transparent;
+					border-bottom: 1px solid $purple;
+					color: $purple;
+				}
+			}
+		}
+		&>.ps-button {
+			outline: none; border: none;
+			width: 250px; height: 60px;
+			margin-top: 50px;
+			background: transparent;
+			border-radius: 2.5px;
+			background: #52C869;
+			color: #fff;
+			@include headerShadow;
+			position: relative;
+			transition-duration: 0.3s;
+			&>img {
+				position:absolute;
+				width: 45px; height: 45px;
+				top: 7.5px; left: 7.5px;
+				transform: scale(0);
+				transition-duration: 0.3s;
+			}
+		}
+		&>.ps-button-donedid {
+			color: #52C869;
+			width: 60px; 
+			border-radius: 50%;
+			overflow: hidden;
+			transition: color 0.2s 0s, border-radius 0.3s 0s, width 0.3s 0s;
+			&>img:first-of-type {
+				transform: scale(1);
+				transition-delay: 0.3s;
+			}
+		}
+		&>.ps-button-error {
+			color: $redish;
+			background: $redish;
+			width: 60px; 
+			border-radius: 50%;
+			overflow: hidden;
+			transition: background 0.2s 0s,
+						color 0.2s 0s, 
+						border-radius 0.3s 0s, 
+						width 0.3s 0s;
+			&>img:last-of-type {
+				transform: scale(1);
+				transition-delay: 0.3s;
+			}
+		}
+	}
+}
+
+.post-solution-show {
+	transform: translateX(0%);
+	transition-delay: 0.2s;
+}

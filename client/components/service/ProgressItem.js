@@ -70,6 +70,10 @@ export default class ProgressItem extends Component {
 						<div>{getFirstWord(this.props.issue.solution.postedBy)}</div>
 						<div>Budget: {this.props.issue.solution.budget}</div>
 					</div>
+					<button
+						data-id={this.props.issue._id} 
+						className="edit"
+						onClick={this.props.solve}></button>
 				</div>
 				<div className="back">
 					<h3>Mark as complete?</h3>

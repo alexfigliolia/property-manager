@@ -54,6 +54,12 @@ $mq-h-1400: '(min-height: 1400px)';
 }
 
 @mixin backgroundTop {
+	background: #1A222E;
+	background: -webkit-linear-gradient(to bottom, #0E1117, #1A222E, #0E1117); 
+	background: linear-gradient(to bottom, #0E1117, #1A222E, #0E1117);
+}
+
+@mixin backgroundTopLogo {
 	background: #f68084;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to top, #a6c0fe, #f68084);
 	background: linear-gradient(to top, #a6c0fe, #f68084);

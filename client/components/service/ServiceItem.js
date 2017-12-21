@@ -18,6 +18,21 @@ export default class ServiceItem extends Component {
  		});
  	}
 
+ 	delete = () => {
+ 		const id = this.props.issue._id;
+    const idx = this.props.index;
+    this.flip();
+    setTimeout(() => {
+    	Meteor.call('issue.delete', id, (err, res) => {
+	      if(err) {
+	        console.log(err);
+	      } else {
+	        // this.props.haveAToast('Issue Deleted:', `You deleted the "${this.props.issues[idx].issue}" service item`);
+	      }
+	    });
+    }, 200);
+ 	}
+
   render = () => {
     return (
       <div 
@@ -33,7 +48,9 @@ export default class ServiceItem extends Component {
 						:
 						<div className='buttons'>
 							<button onClick={this.flip}>Delete</button>
-							<button>Solve</button>
+							<button
+								data-id={this.props.issue._id} 
+								onClick={this.props.solve}>Solve</button>
 						</div>
 					}
 				</div>
@@ -41,7 +58,7 @@ export default class ServiceItem extends Component {
 					<h3>Are you sure you want this item deleted?</h3>
 					<div className='buttons'>
 						<button onClick={this.flip}>No</button>
-						<button>Yes</button>
+						<button onClick={this.delete}>Yes</button>
 					</div>
 				</div>
 			</div>

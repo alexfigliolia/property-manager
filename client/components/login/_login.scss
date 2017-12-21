@@ -40,7 +40,7 @@
 			text-align: center;
 			@include center;
 			&>div {
-				@include backgroundTop;
+				@include backgroundTopLogo;
 			    -webkit-background-clip: text;
 			    -webkit-text-fill-color: transparent;
 			    transform: translateY(-100px);

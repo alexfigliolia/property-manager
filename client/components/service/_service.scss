@@ -8,20 +8,38 @@
 	-webkit-overflow-scrolling: touch;
 	transform: translateX(100%);
 	transition-duration: 0.3s;
+	z-index: 20;
 	&>div {
 		@include center;
 		align-items: flex-start;
 		flex-direction: column;
 		width: 90%;
 		margin: auto;
+		max-width: 900px;
+		@media #{$mq-670} {
+			width: 95%;
+		}
 		&>.service-container {
 			@include center;
 			width: 100%;
 			flex-direction: column;
+			margin-bottom: 40px;
+			@media #{$mq-670} {
+				flex-direction: row;
+				align-items: flex-start;
+				justify-content: space-between;
+			}
 			&>.service-items {
 				@include center;
 				width: 100%;
 				flex-direction: column;
+				max-width: 500px;
+				@media #{$mq-670} {
+					margin: 0 2.5%;
+				}
+				@media #{$mq-1070} {
+					margin: 0 3.5%;
+				}
 				&>h2 {
 					width: 100%;
 					font-weight: 200;
@@ -36,6 +54,12 @@
 
 .service-show {
 	transform: translateX(0%);
+	transition: transform 0.3s 0s, opacity 0.3s 0.2;
+}
+
+.service-up {
+	transform: translateX(0%);
+	opacity: 0;
 }
 
 .service-item {
@@ -102,6 +126,15 @@
 	}
 	&>.front {
 		transform: rotateY(0deg);
+		&>.edit {
+			position: absolute;
+			top: 0; right: 0;
+			height: 30px; width: 30px; 
+			margin: 0; padding: 0;
+			border: none; outline: none;
+			background: url('pencil.svg') no-repeat center;
+			background-size: 20px 20px;
+		}
 	}
 	&>.back {
 		position: absolute;

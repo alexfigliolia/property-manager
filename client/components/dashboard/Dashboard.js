@@ -4,6 +4,7 @@ import Header from '../header/Header';
 import Graphs from '../graphs/Graphs';
 import Footer from '../footer/Footer';
 import Service from '../service/Service';
+import PostSolution from '../postSolution/PostSolution';
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -13,13 +14,15 @@ export default class Dashboard extends Component {
       burgerClasses: 'burger',
       serviceClasses: 'service',
       sliderClasses: 'slider',
-      footerClasses: 'footer'
+      footerClasses: 'footer',
+      postSolutionClasses: 'post-solution',
+      currentIssueId: ''
   	}
   	this.flkty = null;
   }
 
   init = () => {
-  	const carousel = this.refs.slider;
+  	const carousel = document.getElementById('slider');
     const options = {
       cellSelector: '.slide',
       setGallerySize: false,
@@ -50,16 +53,25 @@ export default class Dashboard extends Component {
   }
 
   toggleMenu = () => {
-    this.setState(prevState => {
-      return {
-        burgerClasses: prevState.burgerClasses === 'burger' ?
-                       'burger burger-x' :
-                       'burger',
-        serviceClasses: 'service',
-        sliderClasses: 'slider',
-        footerClasses: 'footer'
-      }
-    })
+    if(this.state.postSolutionClasses === 'post-solution post-solution-show') {
+      this.setState({
+        burgerClasses: 'burger burger-x', 
+        postSolutionClasses: 'post-solution',
+        serviceClasses: 'service service-show'
+      });
+    } else {
+      this.setState(prevState => {
+        return {
+          burgerClasses: prevState.burgerClasses === 'burger' ?
+                         'burger burger-x' :
+                         'burger',
+          serviceClasses: 'service',
+          sliderClasses: 'slider',
+          footerClasses: 'footer',
+          postSolutionClasses: 'post-solution'
+        }
+      });
+    }
   }
 
   showService = () => {
@@ -68,6 +80,15 @@ export default class Dashboard extends Component {
       serviceClasses: 'service service-show',
       sliderClasses: 'slider slider-move',
       footerClasses: 'footer footer-move'
+    });
+  }
+
+  solve = (e) => {
+    this.setState({
+      currentIssueId: e.target.dataset.id,
+      burgerClasses: 'burger burger-x burger-arrow',
+      postSolutionClasses: 'post-solution post-solution-show',
+      serviceClasses: 'service service-show service-up'
     });
   }
 
@@ -82,7 +103,7 @@ export default class Dashboard extends Component {
             toggleMenu={this.toggleMenu} />
     			<div 
     				className={this.state.sliderClasses} 
-    				ref="slider" 
+    				id="slider" 
     				style={{ height: `${this.props.height - 155}px` }}>
     				{
     					this.props.properties.map((prop, i) => {
@@ -112,13 +133,24 @@ export default class Dashboard extends Component {
               properties={this.props.properties} />
           }
     		</div>
+
         {
           this.props.properties.length > 0 &&
           <Service
             classes={this.state.serviceClasses}
             height={this.props.height}
-            issues={this.props.issues.filter(issue => issue.propId === this.props.properties[this.state.selectedIndex]._id)} />
+            issues={this.props.issues.filter(issue => issue.propId === this.props.properties[this.state.selectedIndex]._id)}
+            solve={this.solve} />
         }
+
+        {
+          this.props.properties.length > 0 &&
+          <PostSolution
+            classes={this.state.postSolutionClasses}
+            issue={this.props.issues.filter(issue => issue._id === this.state.currentIssueId)}
+            toggleMenu={this.toggleMenu} />
+        }
+
     	</section>  
     );
   }
