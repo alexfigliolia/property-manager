@@ -1,0 +1,72 @@
+.rent {
+	position: fixed;
+	top: 50px;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	transform: translateX(100%);
+	transition-duration: 0.3s;
+	z-index: 20;
+	&>div {
+		@include center;
+		flex-direction: column;
+		width: 90%;
+		margin: auto;
+		&>h2 {
+			font-size: 2em;
+			font-weight: 200;
+			color: $purple;
+			margin-bottom: 10px;
+		}
+		&>p {
+			margin-top: 0px;
+			font-size: 1.2em;
+			color: $purple;
+		}
+		&>div {
+			@include center;
+			flex-direction: column;
+			width: 100%;
+			margin-top: 30px;
+			&>.rent-payment {
+				@include center;
+				width: 100%;
+				border: 1px solid $purple;
+				border-radius: 5px;
+				color: $greenish;
+				max-width: 350px;
+				@include headerShadow;
+				&>div {
+					@include center;
+					flex-direction: column;
+					height: 100%;
+					width: 100%;
+					&>h3 {
+						margin: 0; padding: 15px 0;
+						width: 90%; height: 50%;
+						@include center;
+						flex-direction: row;
+						justify-content: space-between;
+						font-weight: 200;
+						&>strong {color: $purple;}
+						&:first-of-type {
+							color: $redish;
+							border-bottom: 1px solid $purple;
+						}
+					}
+				}
+			}
+			&>h3 {
+				color: $purple;
+				text-align: center;
+			}
+		}
+	}
+}
+
+.rent-show {
+	transform: translateX(0%);
+	transition-delay: 0.2s;
+}

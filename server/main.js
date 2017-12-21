@@ -92,6 +92,7 @@ Meteor.methods({
     check(amt, Number);
     return Issues.update({ _id: id }, {
       $set: {
+        date: new Date(),
         'solution.completed': true,
         'solution.spent': amt
       }

@@ -6,6 +6,8 @@ import Footer from '../footer/Footer';
 import Service from '../service/Service';
 import PostSolution from '../postSolution/PostSolution';
 import ServiceImages from '../serviceImages/ServiceImages';
+import Rent from '../rent/Rent';
+import { checkDate } from '../../../helpers/helpers';
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -14,6 +16,7 @@ export default class Dashboard extends Component {
   		selectedIndex: 0,
       burgerClasses: 'burger',
       serviceClasses: 'service',
+      rentClasses: 'rent',
       sliderClasses: 'slider',
       footerClasses: 'footer',
       postSolutionClasses: 'post-solution',
@@ -74,6 +77,7 @@ export default class Dashboard extends Component {
                          'burger burger-x' :
                          'burger',
           serviceClasses: 'service',
+          rentClasses: 'rent',
           sliderClasses: 'slider',
           footerClasses: 'footer',
           postSolutionClasses: 'post-solution'
@@ -109,6 +113,15 @@ export default class Dashboard extends Component {
     });
   }
 
+  showRent = () => {
+    this.setState({
+      burgerClasses: 'burger burger-x',
+      rentClasses: 'rent rent-show',
+      sliderClasses: 'slider slider-move',
+      footerClasses: 'footer footer-move'
+    });
+  }
+
   render = () => {
     return (
     	<section 
@@ -135,7 +148,8 @@ export default class Dashboard extends Component {
                       payments={this.props.payments.filter(payment => payment.propId === prop._id)}
                       issues={this.props.issues.filter(issue => issue.propId === prop._id)}
                       property={prop}
-                      showService={this.showService} />
+                      showService={this.showService}
+                      showRent={this.showRent} />
     							</div>
     						);
     					})
@@ -159,6 +173,15 @@ export default class Dashboard extends Component {
             issues={this.props.issues.filter(issue => issue.propId === this.props.properties[this.state.selectedIndex]._id)}
             solve={this.solve}
             showImages={this.showImages} />
+        }
+
+        {
+          this.props.properties.length > 0 &&
+          <Rent
+            classes={this.state.rentClasses}
+            payments={this.props.payments.filter(payment => payment.propId === this.props.properties[this.state.selectedIndex]._id && checkDate(payment.date))}
+            property={this.props.properties[this.state.selectedIndex]}
+            toggleMenu={this.toggleMenu} />
         }
 
         {

@@ -5,6 +5,7 @@
 	height: 70px;
 	max-height: 70px;
 	overflow: hidden;
+	transition-delay: 0.2s;
 	&>div {
 		width: 100%;
 		@include center;
@@ -62,5 +63,7 @@
 }
 
 .footer-move {
-	transform: translateX(-100%);
+	opacity: 0;
+	transform: scale(0.5);
+	transition-delay: 0s;
 }

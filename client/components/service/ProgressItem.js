@@ -43,21 +43,22 @@ export default class ProgressItem extends Component {
  		}, 300)
  	}
 
- 	handleComplete = (spent=this.state.spent) => {
- 		const dough = parseFloat(spent);
+ 	handleComplete = (spent) => {
+ 		const dough = spent == 0 ? parseFloat(spent) : parseFloat(this.state.spent);
  		if(isNaN(dough)) {
  			this.setState({ spent: '' }, () => {
- 				this.refs.dm.placeholder = 'Only numbers are valid';
+ 				this.refs.amountSpent.placeholder = 'Only numbers are valid';
  			});
  		} else {
  			this.flip();
 	 		setTimeout(() => {
 	 			Meteor.call('issue.markComplete', this.props.issue._id, dough, (err, res) => {
 		      if(err) {
-		        this.props.haveAToast("Error:", 'There was a problem with our connection. Please try again.');
+		      	console.log(err);
+		        // this.props.haveAToast("Error:", 'There was a problem with our connection. Please try again.');
 		      } else {
-		        this.props.haveAToast("Success:", `You marked the "${this.props.issue[e.target.dataset.idx].issue}" as complete`);
-		        this.refs.dm.placeholder = 'Dollar amount';
+		        // this.props.haveAToast("Success:", `You marked the "${this.props.issue[e.target.dataset.idx].issue}" as complete`);
+		        this.refs.amountSpent.placeholder = 'Dollar amount';
 		      }
 		    });
 	 		}, 300);
@@ -98,7 +99,7 @@ export default class ProgressItem extends Component {
 								<h3>Total spent fixing this issue</h3>
 								<div>
 									<input
-										ref="dm"
+										ref="amountSpent"
 										onChange={(e) => this.setState({spent: e.target.value})} 
 										type="number" 
 										value={this.state.spent}

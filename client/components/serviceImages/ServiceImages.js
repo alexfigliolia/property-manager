@@ -34,9 +34,7 @@ export default class ServiceImages extends Component {
   	if(prog == 100) this.uploadComplete();
   }
 
-  effectState = () => {
-  	this.setState({ classes: 'upload upload-progress' });
-  }
+  effectState = () => this.setState({ classes: 'upload upload-progress' });
 
   uploadComplete = () => {
   	this.setState({ classes: 'upload upload-complete' });

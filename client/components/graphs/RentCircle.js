@@ -17,7 +17,9 @@ export default class RentCircle extends Component {
   	}
     return (
        <div className='circle'>
-				<div className='circ'>
+				<div 
+					className='circ'
+					onClick={this.props.showRent}>
   				<svg
   					onMouseEnter={this.toggleShadow} 
   					viewBox="0 0 500 500" 

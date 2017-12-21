@@ -25,7 +25,8 @@ export default class Graphs extends Component {
             active={this.props.active}
             color="#5BDC70"
             expRent={this.props.property.monthRentExpected}
-            data={this.props.payments.filter(payment => checkDate(payment.date)).reduce((acc, cur) => acc + cur.payment, 0)} />
+            data={this.props.payments.filter(payment => checkDate(payment.date)).reduce((acc, cur) => acc + cur.payment, 0)}
+            showRent={this.props.showRent} />
           <ServiceCircle 
             active={this.props.active}
             color="#F66463"

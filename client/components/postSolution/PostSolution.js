@@ -14,7 +14,6 @@ export default class PostSolution extends Component {
 
   componentWillReceiveProps = (nextProps) => {
     if(nextProps.issue[0]) {
-      this.refs.postSolution.scrollTop = 0;
       if(nextProps.issue[0] !== this.props.issue[0]) {
         this.setState({
           solution: nextProps.issue[0].solution.description,
@@ -23,6 +22,7 @@ export default class PostSolution extends Component {
           budget: nextProps.issue[0].solution.budget,
           classes: 'ps-button'
         });
+        this.refs.postSolution.scrollTop = 0;
       }
     }
   }
@@ -44,7 +44,7 @@ export default class PostSolution extends Component {
           this.handleSubmitReset({ classes: 'ps-button ps-button-error' });
           // this.props.haveAToast('Error:', 'Please check your inputs and try again.');
         } else {
-          this.handleSubmitReset({ classes: 'ps-button ps-button-donedid' }, this.props.toggleMenu);
+          setTimeout(() => { this.props.toggleMenu() }, 500);
           // this.props.haveAToast('Solved:', `You posted a solution for the "${this.props.issue[0].issue}" service item`);
         }
       });
