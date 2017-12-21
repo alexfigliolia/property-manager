@@ -10,6 +10,12 @@ export default class ProgressItem extends Component {
   	}
   }
 
+  componentWillReceiveProps = (nextProps) => {
+  	if(nextProps.issue !== this.props.issue) {
+  		this.setState({ classes: 'service-item progress-item' });
+  	}
+  }
+
   flip = () => {
  		this.setState(prevState => {
  			return {
@@ -74,6 +80,10 @@ export default class ProgressItem extends Component {
 						data-id={this.props.issue._id} 
 						className="edit"
 						onClick={this.props.solve}></button>
+					<button 
+						onClick={this.props.showImages}
+						data-id={this.props.issue._id} 
+						className="image-button"></button>
 				</div>
 				<div className="back">
 					<h3>Mark as complete?</h3>

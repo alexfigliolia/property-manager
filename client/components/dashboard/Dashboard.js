@@ -5,6 +5,7 @@ import Graphs from '../graphs/Graphs';
 import Footer from '../footer/Footer';
 import Service from '../service/Service';
 import PostSolution from '../postSolution/PostSolution';
+import ServiceImages from '../serviceImages/ServiceImages';
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -16,7 +17,8 @@ export default class Dashboard extends Component {
       sliderClasses: 'slider',
       footerClasses: 'footer',
       postSolutionClasses: 'post-solution',
-      currentIssueId: ''
+      serviceImagesClasses: 'service-images',
+      currentIssueId: '',
   	}
   	this.flkty = null;
   }
@@ -59,6 +61,12 @@ export default class Dashboard extends Component {
         postSolutionClasses: 'post-solution',
         serviceClasses: 'service service-show'
       });
+    } else if(this.state.serviceImagesClasses === 'service-images service-images-show') {
+      this.setState({
+        burgerClasses: 'burger burger-x', 
+        serviceImagesClasses: 'service-images',
+        serviceClasses: 'service service-show'
+      });
     } else {
       this.setState(prevState => {
         return {
@@ -88,6 +96,15 @@ export default class Dashboard extends Component {
       currentIssueId: e.target.dataset.id,
       burgerClasses: 'burger burger-x burger-arrow',
       postSolutionClasses: 'post-solution post-solution-show',
+      serviceClasses: 'service service-show service-up'
+    });
+  }
+
+  showImages = (e) => {
+    this.setState({
+      currentIssueId: e.target.dataset.id,
+      burgerClasses: 'burger burger-x burger-arrow',
+      serviceImagesClasses: 'service-images service-images-show',
       serviceClasses: 'service service-show service-up'
     });
   }
@@ -140,7 +157,8 @@ export default class Dashboard extends Component {
             classes={this.state.serviceClasses}
             height={this.props.height}
             issues={this.props.issues.filter(issue => issue.propId === this.props.properties[this.state.selectedIndex]._id)}
-            solve={this.solve} />
+            solve={this.solve}
+            showImages={this.showImages} />
         }
 
         {
@@ -148,7 +166,17 @@ export default class Dashboard extends Component {
           <PostSolution
             classes={this.state.postSolutionClasses}
             issue={this.props.issues.filter(issue => issue._id === this.state.currentIssueId)}
-            toggleMenu={this.toggleMenu} />
+            toggleMenu={this.toggleMenu}
+            id={this.state.currentIssueId} />
+        }
+
+        {
+          this.props.properties.length > 0 &&
+          <ServiceImages
+            classes={this.state.serviceImagesClasses}
+            issue={this.props.issues.filter(issue => issue._id === this.state.currentIssueId)}
+            toggleMenu={this.toggleMenu}
+            id={this.state.currentIssueId} />
         }
 
     	</section>  

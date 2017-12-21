@@ -8,6 +8,12 @@ export default class Service extends Component {
   	super(props);
   }
 
+  componentWillReceiveProps = (nextProps) => {
+    if(nextProps.classes === 'service service-show' && this.props.classes === 'service') {
+      this.refs.service.scrollTop = 0;
+    }
+  }
+
   render = () => {
     const inProgress = this.props.issues
     .filter(issue => issue.solution.completed === false && issue.solved === true);
@@ -15,7 +21,8 @@ export default class Service extends Component {
     .filter(issue => issue.solution.completed === false);
     return (
     	<section 
-    		className={this.props.classes} 
+    		className={this.props.classes}
+        ref="service" 
     		style={{
     			height: this.props.height - 50,
     			maxHeight: this.props.height - 50
@@ -33,7 +40,8 @@ export default class Service extends Component {
                       key={i}
                       index={i}
                       issue={issue}
-                      solve={this.props.solve} />
+                      solve={this.props.solve}
+                      showImages={this.props.showImages} />
                   );
                 })
               }
@@ -48,7 +56,8 @@ export default class Service extends Component {
                       <ProgressItem 
                         key={i}
                         issue={issue}
-                        solve={this.props.solve} />
+                        solve={this.props.solve}
+                        showImages={this.props.showImages} />
                     );
                   })
                 }

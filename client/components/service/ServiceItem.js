@@ -8,6 +8,12 @@ export default class ServiceItem extends Component {
   	}
   }
 
+  componentWillReceiveProps = (nextProps) => {
+  	if(nextProps.issue !== this.props.issue) {
+  		this.setState({ classes: 'service-item' });
+  	}
+  }
+
  	flip = () => {
  		this.setState(prevState => {
  			return {
@@ -53,6 +59,10 @@ export default class ServiceItem extends Component {
 								onClick={this.props.solve}>Solve</button>
 						</div>
 					}
+					<button
+						onClick={this.props.showImages}
+						data-id={this.props.issue._id}  
+						className="image-button"></button>
 				</div>
 				<div className="back">
 					<h3>Are you sure you want this item deleted?</h3>

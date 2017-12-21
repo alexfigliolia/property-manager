@@ -5,10 +5,9 @@
 html,
 body,
 .App {
-	background: #1A222E;
 	font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
 	height: 100%;
-	background: linear-gradient(to bottom, #0E1117, #1A222E, #0E1117);
+	@include backgroundTop;
 }
 .App {
 	position: relative;
@@ -28,3 +27,4 @@ body,
 @import 'components/footer/footer';
 @import 'components/service/service';
 @import 'components/postSolution/post-solution';
+@import 'components/serviceImages/service-images';

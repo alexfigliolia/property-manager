@@ -1,0 +1,101 @@
+.service-images {
+	position: fixed;
+	top: 50px;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	transform: translateX(100%);
+	transition-duration: 0.3s;
+	z-index: 20;
+	&>div {
+		@include center;
+		flex-direction: column;
+		width: 90%;
+		margin: auto;
+		// max-width: 900px;
+		color: $purple;
+		margin-bottom: 20px;
+		position: relative;
+		// max-width: 600px;
+		&>.upload {
+			// align-self: flex-start;
+			height: 50px;
+			width: 50px;
+			overflow: hidden;
+			@include center;
+			margin: 0; padding: 0;
+			border-radius: 50%;
+			cursor: pointer;
+			outline: none; border: none;
+			@include headerShadow;
+			border: 1px solid $greenish;
+			margin-top: 20px; margin-bottom: 10px;
+			background: transparent url('camera.svg') no-repeat center;
+			background-size: 25px 25px;
+			position: relative;
+			&>input {
+				-moz-appearance: none;
+				-webkit-appearance: none;
+				-ms-appearance: none;
+				appearance: none;
+				outline: none; border: none;
+				margin: 0; padding: 0;
+				color: $purple;
+				cursor: pointer;
+				opacity: 0;
+				height: 50px; width: 50px;
+			}
+			&>img {
+				position: absolute;
+				top: 7.5px; left: 7.5px;
+				height: 35px; width: 35px;
+				@include center;
+				z-index: 2;
+				transform: scale(0);
+				transition-duration: 0.3s;
+			}
+		}
+		&>.upload-progress>img:first-of-type { transform: scale(1); }
+		&>.upload-complete>img:last-of-type { transform: scale(1); }
+		&>h2 {
+			font-size: 2em;
+			font-weight: 200;
+			text-align: center;
+			margin-bottom: 10px;
+			margin-top: 0;
+		}
+		&>p {
+			margin-top: 5px;
+			text-align: center;
+			font-size: 1.1em;
+		}
+		&>div {
+			width: 100%;
+			max-width: 900px;
+			height: auto;
+			@include center;
+			flex-wrap: wrap;
+			flex-direction: column;
+			margin-top: 10px;
+			margin-bottom: 30px;
+			&>img {
+				width: 100%;
+				max-width: 400px;
+				height: auto;
+				min-height: 100px;
+				@include headerShadow;
+				margin-bottom: 20px;
+			}
+			&>h3 {
+				color: $redish;
+			}
+		}
+	}
+}
+
+.service-images-show {
+	transform: translateX(0%);
+	transition-delay: 0.2s;
+}
