@@ -17,6 +17,7 @@ export default class Dashboard extends Component {
   	this.state = {
   		selectedIndex: 0,
       headerClasses: 'header',
+      headerText: ['Rent', '#5BDC70'],
       burgerClasses: 'burger',
       serviceClasses: 'service',
       rentClasses: 'rent',
@@ -97,7 +98,9 @@ export default class Dashboard extends Component {
       burgerClasses: 'burger burger-x',
       serviceClasses: 'service service-show',
       sliderClasses: 'slider slider-move',
-      footerClasses: 'footer footer-move'
+      footerClasses: 'footer footer-move',
+      headerClasses: 'header header-hide-center',
+      headerText: ['Service', '#F66463']
     });
   }
 
@@ -106,7 +109,9 @@ export default class Dashboard extends Component {
       burgerClasses: 'burger burger-x',
       addServiceClasses: 'add-service add-service-show',
       sliderClasses: 'slider slider-move',
-      footerClasses: 'footer footer-move'
+      footerClasses: 'footer footer-move',
+      headerClasses: 'header header-hide-center',
+      headerText: ['Service', '#F66463']
     });
   }
 
@@ -133,7 +138,9 @@ export default class Dashboard extends Component {
       burgerClasses: 'burger burger-x',
       rentClasses: 'rent rent-show',
       sliderClasses: 'slider slider-move',
-      footerClasses: 'footer footer-move'
+      footerClasses: 'footer footer-move',
+      headerClasses: 'header header-hide-center',
+      headerText: ['Rent', '#5BDC70']
     });
   }
 
@@ -156,6 +163,7 @@ export default class Dashboard extends Component {
     		<div>
    				<Header 
             classes={this.state.headerClasses}
+            headerText={this.state.headerText}
             burgerClasses={this.state.burgerClasses}
             toggleMenu={this.toggleMenu}
             toggleChat={this.toggleChat}
