@@ -9,9 +9,8 @@
 	overflow-x: hidden;
 	transform: translateX(100%);
 	transition-duration: 0.3s;
-	z-index: 12;
-	// @include backgroundTop;
-	background: transparent;
+	z-index: 3209384571312340;
+	@include backgroundTop;
 	@media #{$mq-670} {
 		height: 450px;
 		width: 450px;
@@ -56,14 +55,14 @@
 						background-size: contain;
 					}
 					&:last-of-type {
-						background: transparent;
+						background: transparent url('arrow-right.svg') no-repeat center;
 						background-size: contain;
-						z-index: -10;
+						z-index: 45;
 					}
 				}
 				&>h3 {
 					color: $purple;
-					font-weight: 200;
+					font-weight: 400;
 					font-size: 1.5em;
 				}
 			}
@@ -74,6 +73,7 @@
 			// background: #fff;
 			overflow-y: scroll;
 			-webkit-overflow-scrolling: touch;
+			transition-duration: 0.3s;
 			&>div {
 				@include center;
 				height: auto;
@@ -105,6 +105,7 @@
 				}
 			}
 		}
+		&>.messages-move { transform: translateX(70%)}
 		&>.sender {
 			width: 100%;
 			height: 60px;
@@ -116,6 +117,7 @@
 			left: 0;
 			background: #0E1117;
 			@include topShadow;
+			transition-duration: 0.3s;
 			&>textarea {
 				outline: none; border: none;
 				width: calc(100% - 60px);
@@ -138,15 +140,15 @@
 				border-radius: 50%;
 				position: relative;
 				background: transparent;
-				border: 2px solid $redish;
+				border: 1px solid $redish;
 				box-sizing: border-box;
-				@include headerShadow;
+				@include topShadow;
 				@include center;
 				overflow: hidden;
 				&>img {
 					height: 25px; width: 25px;
 					position: absolute;
-					top: 16.5px; left: 17px;
+					top: 17.5px; left: 17.5px;
 					transition-duration: 0.3s;
 				}
 			}
@@ -168,6 +170,7 @@
 				}
 			}
 		}
+		&>.sender-move { transform: translateX(70%)}
 		&>.m-list {
 			position: absolute;
 			top: 50px;

@@ -5,7 +5,7 @@ const Header = (props) => {
 		<header className={props.classes}>
 			<div>
 				<button
-					onClick={props.showChat}>
+					onClick={props.toggleChat}>
 					<svg 
 						version="1.1" 
 						id="Layer_1" 

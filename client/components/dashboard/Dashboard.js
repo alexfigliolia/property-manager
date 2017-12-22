@@ -73,14 +73,6 @@ export default class Dashboard extends Component {
         serviceImagesClasses: 'service-images',
         serviceClasses: 'service service-show'
       });
-    } else if(this.state.chatClasses === 'chat chat-show') {
-      this.setState({
-        headerClasses: 'header',
-        burgerClasses: 'burger',
-        chatClasses: 'chat',
-        sliderClasses: 'slider',
-        footerClasses: 'footer'
-      });
     } else {
       this.setState(prevState => {
         return {
@@ -134,13 +126,14 @@ export default class Dashboard extends Component {
     });
   }
 
-  showChat = () => {
-    this.setState({
-      headerClasses: 'header header-hide-chat',
-      burgerClasses: 'burger burger-x burger-arrow',
-      chatClasses: 'chat chat-show',
-      sliderClasses: 'slider slider-move',
-      footerClasses: 'footer footer-move'
+  toggleChat = () => {
+    this.setState(prevState => {
+      return {
+        headerClasses: prevState.headerClasses === 'header header-hide-chat' ?
+                     'header' : 'header header-hide-chat',
+        chatClasses: prevState.chatClasses === 'chat chat-show' ? 
+                   'chat' : 'chat chat-show',
+      }
     });
   }
 
@@ -154,7 +147,7 @@ export default class Dashboard extends Component {
             classes={this.state.headerClasses}
             burgerClasses={this.state.burgerClasses}
             toggleMenu={this.toggleMenu}
-            showChat={this.showChat} />
+            toggleChat={this.toggleChat} />
     			<div 
     				className={this.state.sliderClasses} 
     				id="slider" 
@@ -231,7 +224,8 @@ export default class Dashboard extends Component {
           <Chat
             classes={this.state.chatClasses} 
             messages={this.props.messages}
-            conversations={this.props.conversations} />
+            conversations={this.props.conversations}
+            toggleChat={this.toggleChat} />
         }
 
     	</section>  

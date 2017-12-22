@@ -5,6 +5,9 @@
 	overflow: hidden;
 	@include center;
 	z-index: 312340;
+	transform: translateY(0%);
+	transition-delay: 0.2s;
+	transition-duration: 0.3s;
 	&>div {
 		width: 90%;
 		max-width: 450px;
@@ -36,7 +39,6 @@
 }
 
 .burger {
-	z-index: 1234;
 	@include center;
 	&>div {
 		height: 20px;
@@ -86,7 +88,6 @@
 }
 
 .burger-x {
-	transform: translateZ(100px);
 	&>div>#top {
 		transform: translateY(5px) translateX(5px) rotate(135deg);
 		transition-delay: 0.3s;
@@ -120,15 +121,8 @@
 	}
 }
 
-.header-hide-chat>div{
-	&>button {
-		&:first-of-type {
-			opacity: 0;
-			pointer-events: none;
-		}
-		&:last-of-type>.burger {
-			z-index: 20394857;
-			transform: translateZ(10px);
-		}
-	}
+.header-hide-chat {
+	transform: translateY(-100%) translateZ(-100px);
+	transition-delay: 0s;
+	z-index: -10;
 }
