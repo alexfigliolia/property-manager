@@ -26,7 +26,7 @@ export default class Chat extends Component {
   	setTimeout(() => {
   		this.refs.messages.scrollTop = this.refs.messages.scrollHeight;
   	}, 100);
-    if(nextProps.conversations !== this.props.conversations) {
+    if(nextProps.conversations.length > 0) {
       this.getGroup(nextProps.conversations);
     }
   }
@@ -73,9 +73,8 @@ export default class Chat extends Component {
   	}
   	this.setState({
   		currentChat: {name: cc, _id: id},
-  		contactsClasses: 'm-list',
   		conversation: convo[0]
-  	});
+  	}, this.toggleContacts);
     setTimeout(() => {
       this.refs.messages.scrollTop = this.refs.messages.scrollHeight;
     }, 100);
