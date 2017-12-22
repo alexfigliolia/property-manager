@@ -59,7 +59,9 @@ export default class App extends Component {
             height={this.state.height}
             properties={this.state.properties}
             issues={this.state.issues}
-            payments={this.state.rentPayments} />
+            payments={this.state.rentPayments}
+            messages={this.props.messages}
+            conversations={this.props.conversations} />
         }
 
       </div>

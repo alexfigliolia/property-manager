@@ -38,6 +38,11 @@
 				color: $greenish;
 				max-width: 350px;
 				@include headerShadow;
+				flex-direction: column;
+				&>h3 {
+					margin: 0;
+					padding: 15px 0 10px 0;
+				}
 				&>div {
 					@include center;
 					flex-direction: column;
@@ -50,7 +55,10 @@
 						flex-direction: row;
 						justify-content: space-between;
 						font-weight: 200;
-						&>strong {color: $purple;}
+						&>strong {
+							color: $purple;
+							font-weight: 400;
+						}
 						&:first-of-type {
 							color: $redish;
 							border-bottom: 1px solid $purple;

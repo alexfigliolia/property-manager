@@ -2,9 +2,10 @@ import React from 'react';
 
 const Header = (props) => {
 	return (
-		<header className="header">
+		<header className={props.classes}>
 			<div>
-				<button>
+				<button
+					onClick={props.showChat}>
 					<svg 
 						version="1.1" 
 						id="Layer_1" 
@@ -30,7 +31,7 @@ const Header = (props) => {
 				<button></button>
 				<button></button>
 				<button 
-					className={props.classes}
+					className={props.burgerClasses}
 					onClick={props.toggleMenu}>
 					<div>
 						<div id="top"></div>

@@ -110,5 +110,21 @@ Meteor.methods({
     return Issues.remove({_id: id});
   },
 
+  'messages.send'(sentFrom, to, text, convoId) {
+    check(sentFrom, Object);
+    check(to, Object);
+    check(text, String);
+    check(convoId, String);
+    let sentTo;
+    if('name' in to) { sentTo = to } else { sentTo = 'group' }
+    return Messages.insert({
+      from: sentFrom,
+      to: sentTo,
+      text: text,
+      date: new Date(),
+      conversation: convoId
+    })
+  },
+
 
 });

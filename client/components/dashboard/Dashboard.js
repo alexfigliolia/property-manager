@@ -7,6 +7,7 @@ import Service from '../service/Service';
 import PostSolution from '../postSolution/PostSolution';
 import ServiceImages from '../serviceImages/ServiceImages';
 import Rent from '../rent/Rent';
+import Chat from '../chat/Chat';
 import { checkDate } from '../../../helpers/helpers';
 
 export default class Dashboard extends Component {
@@ -14,6 +15,7 @@ export default class Dashboard extends Component {
   	super(props);
   	this.state = {
   		selectedIndex: 0,
+      headerClasses: 'header',
       burgerClasses: 'burger',
       serviceClasses: 'service',
       rentClasses: 'rent',
@@ -21,6 +23,7 @@ export default class Dashboard extends Component {
       footerClasses: 'footer',
       postSolutionClasses: 'post-solution',
       serviceImagesClasses: 'service-images',
+      chatClasses: 'chat',
       currentIssueId: '',
   	}
   	this.flkty = null;
@@ -70,12 +73,21 @@ export default class Dashboard extends Component {
         serviceImagesClasses: 'service-images',
         serviceClasses: 'service service-show'
       });
+    } else if(this.state.chatClasses === 'chat chat-show') {
+      this.setState({
+        headerClasses: 'header',
+        burgerClasses: 'burger',
+        chatClasses: 'chat',
+        sliderClasses: 'slider',
+        footerClasses: 'footer'
+      });
     } else {
       this.setState(prevState => {
         return {
           burgerClasses: prevState.burgerClasses === 'burger' ?
                          'burger burger-x' :
                          'burger',
+          headerClasses: 'header',
           serviceClasses: 'service',
           rentClasses: 'rent',
           sliderClasses: 'slider',
@@ -122,6 +134,16 @@ export default class Dashboard extends Component {
     });
   }
 
+  showChat = () => {
+    this.setState({
+      headerClasses: 'header header-hide-chat',
+      burgerClasses: 'burger burger-x burger-arrow',
+      chatClasses: 'chat chat-show',
+      sliderClasses: 'slider slider-move',
+      footerClasses: 'footer footer-move'
+    });
+  }
+
   render = () => {
     return (
     	<section 
@@ -129,8 +151,10 @@ export default class Dashboard extends Component {
     		style={{ height: `${this.props.height}px` }}>
     		<div>
    				<Header 
-            classes={this.state.burgerClasses}
-            toggleMenu={this.toggleMenu} />
+            classes={this.state.headerClasses}
+            burgerClasses={this.state.burgerClasses}
+            toggleMenu={this.toggleMenu}
+            showChat={this.showChat} />
     			<div 
     				className={this.state.sliderClasses} 
     				id="slider" 
@@ -200,6 +224,14 @@ export default class Dashboard extends Component {
             issue={this.props.issues.filter(issue => issue._id === this.state.currentIssueId)}
             toggleMenu={this.toggleMenu}
             id={this.state.currentIssueId} />
+        }
+
+        {
+          this.props.conversations.length > 0 &&
+          <Chat
+            classes={this.state.chatClasses} 
+            messages={this.props.messages}
+            conversations={this.props.conversations} />
         }
 
     	</section>  

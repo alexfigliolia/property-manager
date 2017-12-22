@@ -4,7 +4,7 @@
 	max-height: 70px;
 	overflow: hidden;
 	@include center;
-	z-index: 30;
+	z-index: 312340;
 	&>div {
 		width: 90%;
 		max-width: 450px;
@@ -22,6 +22,7 @@
 			position: relative;
 			margin: 0;
 			padding: 0;
+			transition-duration: 0.3s;
 			&>svg {
 				@include center;
 				height: 40px;
@@ -85,6 +86,7 @@
 }
 
 .burger-x {
+	transform: translateZ(100px);
 	&>div>#top {
 		transform: translateY(5px) translateX(5px) rotate(135deg);
 		transition-delay: 0.3s;
@@ -115,5 +117,18 @@
 		transform: translateY(2.25px) translateX(15px) rotate(315deg) scaleX(0.5) ;
 		transition-delay: 0s;
 		background: #4E75C9;
+	}
+}
+
+.header-hide-chat>div{
+	&>button {
+		&:first-of-type {
+			opacity: 0;
+			pointer-events: none;
+		}
+		&:last-of-type>.burger {
+			z-index: 20394857;
+			transform: translateZ(10px);
+		}
 	}
 }

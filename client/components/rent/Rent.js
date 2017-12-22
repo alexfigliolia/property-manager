@@ -17,6 +17,7 @@ const Rent = (props) => {
   						const year = d.getUTCFullYear();
   						return (
   							<div className='rent-payment' key={i}>
+                  <h3>Payment:</h3>
   								<div>
   									<h3><strong>Date:&nbsp;</strong>{`${m} ${date}, ${year}`}</h3>
   									<h3><strong>Amount:&nbsp;</strong>${commafy(parseFloat(payment.payment).toFixed(2))}</h3>

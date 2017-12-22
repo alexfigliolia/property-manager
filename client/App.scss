@@ -4,6 +4,7 @@
 
 html,
 body,
+#root,
 .App {
 	font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
 	height: 100%;
@@ -29,3 +30,4 @@ body,
 @import 'components/rent/rent';
 @import 'components/postSolution/post-solution';
 @import 'components/serviceImages/service-images';
+@import 'components/chat/chat';
