@@ -179,9 +179,10 @@
 			height: calc(100% - 50px);
 			width: 70%;
 			max-width: 225px;
-			background: #ECF0F0;
+			background: #1A2233;
 			transform: translateX(-110%);
 			transition-duration: 0.3s;
+			border-right: 0.5px solid $purple;
 			&>div {
 				width: 100%;
 				height: auto;
@@ -197,57 +198,19 @@
 				}
 				&>.manager-contact {
 					height: 50px;
-					border-top: 1px solid #fff;
+					border-bottom: 0.5px solid $purple;
 					@include center;
 					width: 100%;
-					color: #595959;
+					color: $purple;
 					cursor: pointer;
+				}
+				&>.mc-group {
+					border-top: 0.5px solid $purple;
 				}
 			}
 		}
 		&>.m-list-show {
 			transform: translateX(0%);
-		}
-	}
-}
-
-.chat-toggler {
-	display: none;
-	@media #{$mq-800} {
-		outline: none; border: none;
-		height: 70px; width: 70px;
-		position: fixed;
-		bottom: 20px; right: 20px;
-		border-radius: 50%;
-		z-index: 34;
-		@include headerShadow;
-		background: $redish;
-		transition-duration: 0.3s;
-		@include center;
-		&>img {
-			position: absolute;
-			height: 35px;
-			width: 35px;
-			top: 17.5px;
-			left: 17.5px;
-			transition-duration: 0.3s;
-			&:last-of-type {
-				height: 40px; width: 40px;
-				top: 15px; left: 15px;
-				transform: scale(0);
-			}
-		}
-	}
-}
-
-.chat-toggler-closer {
-	@media #{$mq-800} {
-		transform: translateX(-450px) rotate(360deg);
-		&>img:first-of-type {
-			transform: scale(0)
-		}
-		&>img:last-of-type {
-			transform: scale(1);
 		}
 	}
 }

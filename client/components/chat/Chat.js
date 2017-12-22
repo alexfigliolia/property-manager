@@ -159,7 +159,7 @@ export default class Chat extends Component {
     					<div className="contact-list-header">Contacts</div>
     					<div
     						data-chat='Group' 
-    						className='manager-contact'
+    						className='manager-contact mc-group'
     						onClick={this.changeChat}>Group</div>
     					{
     						this.state.managers.map((guy, i) => {

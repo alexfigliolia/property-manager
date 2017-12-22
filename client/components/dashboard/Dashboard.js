@@ -8,6 +8,7 @@ import PostSolution from '../postSolution/PostSolution';
 import ServiceImages from '../serviceImages/ServiceImages';
 import Rent from '../rent/Rent';
 import Chat from '../chat/Chat';
+import AddService from '../addService/AddService';
 import { checkDate } from '../../../helpers/helpers';
 
 export default class Dashboard extends Component {
@@ -23,6 +24,7 @@ export default class Dashboard extends Component {
       footerClasses: 'footer',
       postSolutionClasses: 'post-solution',
       serviceImagesClasses: 'service-images',
+      addServiceClasses: 'add-service',
       chatClasses: 'chat',
       currentIssueId: '',
   	}
@@ -81,10 +83,10 @@ export default class Dashboard extends Component {
                          'burger',
           headerClasses: 'header',
           serviceClasses: 'service',
+          addServiceClasses: 'add-service',
           rentClasses: 'rent',
           sliderClasses: 'slider',
           footerClasses: 'footer',
-          postSolutionClasses: 'post-solution'
         }
       });
     }
@@ -94,6 +96,15 @@ export default class Dashboard extends Component {
     this.setState({
       burgerClasses: 'burger burger-x',
       serviceClasses: 'service service-show',
+      sliderClasses: 'slider slider-move',
+      footerClasses: 'footer footer-move'
+    });
+  }
+
+  showAddService = () => {
+    this.setState({
+      burgerClasses: 'burger burger-x',
+      addServiceClasses: 'add-service add-service-show',
       sliderClasses: 'slider slider-move',
       footerClasses: 'footer footer-move'
     });
@@ -147,7 +158,8 @@ export default class Dashboard extends Component {
             classes={this.state.headerClasses}
             burgerClasses={this.state.burgerClasses}
             toggleMenu={this.toggleMenu}
-            toggleChat={this.toggleChat} />
+            toggleChat={this.toggleChat}
+            showAddService={this.showAddService} />
     			<div 
     				className={this.state.sliderClasses} 
     				id="slider" 
@@ -217,6 +229,14 @@ export default class Dashboard extends Component {
             issue={this.props.issues.filter(issue => issue._id === this.state.currentIssueId)}
             toggleMenu={this.toggleMenu}
             id={this.state.currentIssueId} />
+        }
+
+        {
+          this.props.properties.length > 0 &&
+          <AddService
+            classes={this.state.addServiceClasses}
+            property={this.props.properties[this.state.selectedIndex]}
+            toggleMenu={this.toggleMenu} />
         }
 
         {

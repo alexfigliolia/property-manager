@@ -35,6 +35,17 @@
 				left: 5px;
 			}
 		}
+		&>button:nth-of-type(2)>svg {
+			height: 35px;
+			width: 35px;
+			left: 7.5px;
+		}
+		&>button:nth-of-type(3)>svg {
+			top: 2.5px;
+			left: 7.5px;
+			height: 37.5px;
+			width: 37.5px;
+		}
 	}
 }
 
@@ -49,8 +60,8 @@
 		&::after {
 			content: '';
 			position: absolute;
-			top: 6px;
-			right: -4px;
+			top: 9.5px;
+			right: -3px;
 			height: 2px; width: 90%;
 			background: #4E75C9;
 			transform: scaleX(0);
@@ -89,12 +100,12 @@
 
 .burger-x {
 	&>div>#top {
-		transform: translateY(5px) translateX(5px) rotate(135deg);
+		transform: translateY(9px) translateX(5px) rotate(135deg);
 		transition-delay: 0.3s;
 		background: #4E75C9;
 	}
 	&>div>#middle {
-		transform: translateY(-4px) translateX(5px) rotate(225deg);
+		transform: translateY(0px) translateX(5px) rotate(225deg);
 		transition-delay: 0.3s;
 		background: #4E75C9;
 	}
@@ -110,19 +121,20 @@
 		transition-delay: 0.3s;
 	}
 	&>div>#top {
-		transform: translateY(1px) translateX(15px) rotate(225deg) scaleX(0.5);
+		transform: translateY(5px) translateX(15px) rotate(225deg) scaleX(0.5);
 		transition-delay: 0s;
 		background: #4E75C9;
 	}
 	&>div>#middle {
-		transform: translateY(2.25px) translateX(15px) rotate(315deg) scaleX(0.5) ;
+		transform: translateY(5px) translateX(15px) rotate(315deg) scaleX(0.5) ;
 		transition-delay: 0s;
 		background: #4E75C9;
 	}
 }
 
 .header-hide-chat {
-	transform: translateY(-100%) translateZ(-100px);
+	transform: translateX(-100%);
+	opacity: 0;
 	transition-delay: 0s;
 	z-index: -10;
 }
