@@ -9,6 +9,7 @@ import ServiceImages from '../serviceImages/ServiceImages';
 import Rent from '../rent/Rent';
 import Chat from '../chat/Chat';
 import AddService from '../addService/AddService';
+import CollectPay from '../collectPay/CollectPay';
 import { checkDate } from '../../../helpers/helpers';
 
 export default class Dashboard extends Component {
@@ -26,6 +27,7 @@ export default class Dashboard extends Component {
       postSolutionClasses: 'post-solution',
       serviceImagesClasses: 'service-images',
       addServiceClasses: 'add-service',
+      collectPayClasses: 'collect-pay',
       chatClasses: 'chat',
       currentIssueId: '',
   	}
@@ -86,6 +88,7 @@ export default class Dashboard extends Component {
           serviceClasses: 'service',
           addServiceClasses: 'add-service',
           rentClasses: 'rent',
+          collectPayClasses: 'collect-pay',
           sliderClasses: 'slider',
           footerClasses: 'footer',
         }
@@ -155,6 +158,17 @@ export default class Dashboard extends Component {
     });
   }
 
+  collectPayShow = () => {
+    this.setState({
+      burgerClasses: 'burger burger-x',
+      collectPayClasses: 'collect-pay collect-pay-show',
+      sliderClasses: 'slider slider-move',
+      footerClasses: 'footer footer-move',
+      headerClasses: 'header header-hide-center',
+      headerText: ['Rent', '#5BDC70']
+    });
+  }
+
   render = () => {
     return (
     	<section 
@@ -167,7 +181,8 @@ export default class Dashboard extends Component {
             burgerClasses={this.state.burgerClasses}
             toggleMenu={this.toggleMenu}
             toggleChat={this.toggleChat}
-            showAddService={this.showAddService} />
+            showAddService={this.showAddService}
+            collectPayShow={this.collectPayShow} />
     			<div 
     				className={this.state.sliderClasses} 
     				id="slider" 
@@ -217,6 +232,14 @@ export default class Dashboard extends Component {
           <Rent
             classes={this.state.rentClasses}
             payments={this.props.payments.filter(payment => payment.propId === this.props.properties[this.state.selectedIndex]._id && checkDate(payment.date))}
+            property={this.props.properties[this.state.selectedIndex]}
+            toggleMenu={this.toggleMenu} />
+        }
+
+        {
+          this.props.properties.length > 0 &&
+          <CollectPay 
+            classes={this.state.collectPayClasses}
             property={this.props.properties[this.state.selectedIndex]}
             toggleMenu={this.toggleMenu} />
         }

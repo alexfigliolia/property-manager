@@ -120,6 +120,16 @@ Meteor.methods({
     return Issues.remove({_id: id});
   },
 
+  'payments.create'(id, amount) {
+    check(id, String);
+    check(amount, Number);
+    return Payments.insert({
+      propId: id, 
+      payment: amount, 
+      date: new Date()
+    });
+  },
+
   'messages.send'(sentFrom, to, text, convoId) {
     check(sentFrom, Object);
     check(to, Object);

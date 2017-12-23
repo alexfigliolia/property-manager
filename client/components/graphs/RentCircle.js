@@ -15,6 +15,8 @@ export default class RentCircle extends Component {
   	} else {
   		graphVal = 199;
   	}
+  	const gvValid = (Math.PI * (2 * graphVal)) < 0 ? 0 : (Math.PI * (2 * graphVal));
+  	const sdo = this.props.active ? gvValid : (Math.PI * (2 * 199))
     return (
        <div className='circle'>
 				<div 
@@ -45,13 +47,13 @@ export default class RentCircle extends Component {
 							strokeLinecap="round"
 							style={{
 								strokeDasharray: (Math.PI * (2 * 200)),
-								strokeDashoffset: this.props.active ? (Math.PI * (2 * graphVal)) : (Math.PI * (2 * 199))
+								strokeDashoffset: sdo
 							}} />
 					</svg>
 					<div 
 						className="title"
 						style={{
-							color: graphVal === 0 ? '#fff' : this.props.color
+							color: gvValid === 0 ? '#fff' : this.props.color
 						}}>Rent</div>
   			</div>
 			</div>

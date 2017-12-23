@@ -32,7 +32,8 @@
 			@include headerShadow;
 			border: 1px solid $greenish;
 			margin-top: 20px; margin-bottom: 10px;
-			background: transparent url('camera.svg') no-repeat center;
+			// background: transparent url('camera.svg') no-repeat center;
+			background: transparent;
 			background-size: 25px 25px;
 			position: relative;
 			&>input {
@@ -48,6 +49,7 @@
 				height: 50px; width: 50px;
 			}
 			&>img {
+				pointer-events: none;
 				position: absolute;
 				top: 7.5px; left: 7.5px;
 				height: 35px; width: 35px;
@@ -56,8 +58,17 @@
 				transform: scale(0);
 				transition-duration: 0.3s;
 			}
+			&>img:first-of-type {
+				transform: scale(1);
+				height: 25px;
+				width: 25px;
+				left: 11.5px;
+				top: 11.5px;
+			}
 		}
-		&>.upload-progress>img:first-of-type { transform: scale(1); }
+		&>.upload-progress>img:first-of-type { transform: scale(0); }
+		&>.upload-progress>img:nth-of-type(2) { transform: scale(1); }
+		&>.upload-complete>img:first-of-type { transform: scale(0); }
 		&>.upload-complete>img:last-of-type { transform: scale(1); }
 		&>h2 {
 			font-size: 2em;

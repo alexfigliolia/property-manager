@@ -50,7 +50,8 @@ const Header = (props) => {
 						c0.484,0.816,0.761,1.741,0.761,2.714C51.596,11.827,51.039,13.171,50.028,14.181z"/>
 					</svg>
 				</button>
-				<button>
+				<button
+					onClick={props.collectPayShow}>
 					<svg version="1.1" id="Layer_1" x="0px" y="0px"
 						 width="56.69px" height="56.69px" viewBox="0 0 56.69 56.69" enableBackground="new 0 0 56.69 56.69">
 							<path fill="#3C568A" d="M54.162,29.047c-0.214-0.236-0.855-0.552-1.583-0.78c-0.027-0.211-0.078-0.414-0.155-0.602

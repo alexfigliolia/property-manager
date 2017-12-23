@@ -97,7 +97,7 @@ export default class PostSolution extends Component {
               	name="no"
               	type="checkbox" 
               	checked={!this.state.checked} 
-              	onChange={(e) => this.setState({ checked: false })} />
+              	onChange={(e) => this.setState({ checked: false, budget: 0 })} />
             </div>
             {
             	this.state.checked &&

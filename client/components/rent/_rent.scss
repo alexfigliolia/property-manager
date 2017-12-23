@@ -2,7 +2,7 @@
 	position: fixed;
 	top: 50px;
 	left: 0;
-	height: 100%;
+	height: calc(100% - 50px);
 	width: 100%;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
@@ -39,6 +39,7 @@
 				max-width: 350px;
 				@include headerShadow;
 				flex-direction: column;
+				margin-bottom: 25px;
 				&>h3 {
 					margin: 0;
 					padding: 15px 0 10px 0;

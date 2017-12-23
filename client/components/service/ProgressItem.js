@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getFirstWord } from '../../../helpers/helpers';
+import { getFirstWord, commafy } from '../../../helpers/helpers';
 
 export default class ProgressItem extends Component {
   constructor(props) {
@@ -75,7 +75,7 @@ export default class ProgressItem extends Component {
 					<p><strong>Solution: </strong>{this.props.issue.solution.description}</p>
 					<div className='buttons'>
 						<div>{getFirstWord(this.props.issue.solution.postedBy)}</div>
-						<div>Budget: {this.props.issue.solution.budget}</div>
+						<div>Budget: ${commafy(this.props.issue.solution.budget)}</div>
 					</div>
 					<button
 						data-id={this.props.issue._id} 

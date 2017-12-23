@@ -54,6 +54,7 @@ export default class ServiceImages extends Component {
 							name="myImage" 
 							accept="image/*" 
 							onChange={this.handleImage} />
+              <img src="camera.svg" alt="uploat an image" />
 							<img src='loader.gif' alt="upload in progress" />
 							<img src='check-g.svg' alt="upload complete" />
 					</button>
