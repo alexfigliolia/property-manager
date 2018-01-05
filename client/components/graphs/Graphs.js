@@ -6,13 +6,10 @@ import { checkDate } from '../../../helpers/helpers';
 
 
 export default class Graphs extends Component {
-  constructor(props) {
-  	super(props);
-  }
-
+  
   componentDidMount = () => {
     if(this.props.index === this.props.length) setTimeout(this.props.init(), 200);
-  };
+  }
 
   render = () => {
     return (

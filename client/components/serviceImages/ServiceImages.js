@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CloudConfig } from './CloudConfig';
+import CloudConfig from './CloudConfig';
 import axios from 'axios';
 
 export default class ServiceImages extends Component {

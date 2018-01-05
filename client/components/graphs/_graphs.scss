@@ -21,6 +21,7 @@
 				width: 100%;
 				padding-bottom: 100%;
 				cursor: pointer;
+				background: url('ticks.png') no-repeat center/75%;
 				&>svg {
 					@include center;
 					position: absolute;
@@ -29,6 +30,7 @@
 					height: 100%;
 					width: 100%;
 					transform: rotate(-90deg);
+					background: transparent;
 					&>circle {
 						transition-timing-function: cubic-bezier(0.99, 0.01, 0.62, 0.94);
 						transition: stroke-dashoffset 0.8s 0.15s, stroke-dasharray 0.8s 0.15s;
@@ -45,6 +47,11 @@
 					color: #fff;
 					font-size: 4vh;
 					@include center;
+					flex-direction: column;
+					&>span {
+						font-size: 2.5vh;
+						font-weight: 900;
+					}
 				}
 			}
 		}

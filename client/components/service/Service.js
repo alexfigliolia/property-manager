@@ -4,10 +4,6 @@ import ProgressItem from './ProgressItem'
 import { checkDate } from '../../../helpers/helpers';
 
 export default class Service extends Component {
-  constructor(props) {
-  	super(props);
-  }
-
   componentWillReceiveProps = (nextProps) => {
     if(nextProps.classes === 'service service-show' && this.props.classes === 'service') {
       this.refs.service.scrollTop = 0;
