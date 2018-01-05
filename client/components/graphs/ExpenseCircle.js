@@ -14,6 +14,10 @@ export default class ExpenseCircle extends Component {
   					style={{
   						filter: `drop-shadow( 0px 0px 5px ${this.props.color})`
   					}}>
+  					<linearGradient id="expenseGrad">
+	            <stop offset="0%"  stop-color={this.props.color2} />
+	            <stop offset="100%" stop-color={this.props.color} />
+		        </linearGradient>
 						<circle
 							stroke="#1A222E"
 							strokeWidth="20" 
@@ -23,7 +27,7 @@ export default class ExpenseCircle extends Component {
 							r="200"
 							strokeLinecap="round" />
 						<circle
-							stroke={this.props.color}
+							stroke="url(#expenseGrad)"
 							strokeWidth="20" 
 							fill='transparent' 
 							cx="250" 

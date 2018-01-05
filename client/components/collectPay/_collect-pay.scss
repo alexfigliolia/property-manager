@@ -9,11 +9,12 @@
 	transform: translateX(100%);
 	transition-duration: 0.3s;
 	z-index: 20;
-	@include backgroundTop;
+	@include center;
 	&>div {
 		@include center;
 		flex-direction: column;
 		width: 100%;
+		margin-top: -10%;
 		&>h2 {
 			color: $greenish;
 			font-size: 2em;
