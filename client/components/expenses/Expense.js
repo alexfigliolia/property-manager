@@ -14,7 +14,7 @@ const Expense = (props) => {
 						<h4>Item(s):</h4><h4>{props.products === "" ? props.issue : props.products}</h4>
 					</div>
 					<div>
-						<h4>Amount:</h4><h4>{`$${commafy(props.spent.toFixed(2))}`}</h4>
+						<h4>Amount:</h4><h4>{`$${commafy(parseFloat(props.spent).toFixed(2))}`}</h4>
 					</div>
 				</div>
 			</div>

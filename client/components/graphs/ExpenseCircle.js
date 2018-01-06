@@ -2,7 +2,7 @@ import React from 'react';
 import CountUp from 'react-countup';
 
 const ExpenseCircle = (props) => {
-	const spent = props.data.reduce((acc, cur) => acc + cur.solution.spent, 0);
+	const spent = props.data.reduce((acc, cur) => acc + parseFloat(cur.solution.spent), 0);
 	let perc = (spent * 100)/props.total;
 	perc = isNaN(perc) ? 0 : perc;
 	let graphVal = perc === 0 ? 1 : perc;

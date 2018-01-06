@@ -9,8 +9,81 @@
 	transform: translateX(100%);
 	transition-duration: 0.3s;
 	z-index: 20;
-	@include backgroundTop;
 	&>div {
 		@include center;
+		flex-direction: column;
+		width: 85%;
+		max-width: 400px;
+		margin: auto;
+		&>h2 {
+			color: $purple;
+			font-weight: 200;
+			font-size: 2em;
+			margin-bottom: 10px;
+		}
+		&>h3 {
+			margin-top: 0px;
+			font-size: 1.2em;
+			color: $purple;
+			font-weight: 600;
+		}
+		&>div {
+			@include center;
+			flex-direction: column;
+			width: 100%;
+			margin-top: 30px;
+			&>div {
+				@include center;
+				flex-direction: column;
+				width: 100%;
+				margin-bottom: 30px;
+				&>label {
+					color: $purple;
+					margin-bottom: 20px;
+					font-size: 1.2em;
+				}
+				&>input {
+					outline: none; border: none;
+					background: transparent;
+					border-bottom: 1px solid $redish;
+					border-radius: 0;
+					width: 100%; color: #fff;
+					margin: 0; padding: 5px;
+				}
+			}
+		}
+		&>.pb {
+			outline: none; border: none;
+			width: 220px; height: 50px;
+			@include center; background: $redish;
+			@include headerShadow; color: #fff;
+			margin: 0; padding: 0;
+			margin-top: 10px;
+			border-radius: 2.5px;
+			transition-duration: 0.3s;
+			position: relative;
+			overflow: hidden;
+			&>img {
+				position: absolute;
+				top: 7.5px; left: 7.5px;
+				width: 35px; height: 35px;
+				transform: scale(0);
+				transition-duration: 0.3s;
+			}
+		}
+		&>.pb-complete {
+			width: 50px;
+			border-radius: 50%;
+			color: $redish;
+			transform: width 0.3s 0s, border-radius 0.3s 0s, color 0.2s 0s;
+			&>img {
+				transform: scale(1);
+				transition-delay: 0.3s;
+			}
+		}
 	}
+}
+
+.paybill-show {
+	transform: translateX(0%);
 }

@@ -82,6 +82,12 @@ export default class Dashboard extends Component {
         serviceImagesClasses: 'service-images',
         serviceClasses: 'service service-show'
       });
+    } else if(this.state.paybillClasses === 'paybill paybill-show') {
+      this.setState({
+        burgerClasses: 'burger burger-x', 
+        paybillClasses: 'paybill',
+        expensesClasses: 'expenses expenses-show',
+      });
     } else {
       this.setState(prevState => {
         return {
@@ -128,6 +134,15 @@ export default class Dashboard extends Component {
       currentIssueId: e.target.dataset.id,
       burgerClasses: 'burger burger-x burger-arrow',
       postSolutionClasses: 'post-solution post-solution-show',
+      serviceClasses: 'service service-show service-up'
+    });
+  }
+
+  paybill = (e) => {
+    this.setState({
+      burgerClasses: 'burger burger-x burger-arrow',
+      paybillClasses: 'paybill paybill-show',
+      expensesClasses: 'expenses expenses-show expenses-hide',
       serviceClasses: 'service service-show service-up'
     });
   }
@@ -197,7 +212,8 @@ export default class Dashboard extends Component {
             toggleMenu={this.toggleMenu}
             toggleChat={this.toggleChat}
             showAddService={this.showAddService}
-            collectPayShow={this.collectPayShow} />
+            collectPayShow={this.collectPayShow}
+            paybill={this.paybill} />
     			<div 
     				className={this.state.sliderClasses} 
     				id="slider" 
@@ -297,7 +313,9 @@ export default class Dashboard extends Component {
         {
           this.props.properties.length > 0 &&
           <Paybill 
-            classes={this.state.paybillClasses} />
+            classes={this.state.paybillClasses}
+            property={this.props.properties[this.state.selectedIndex]}
+            toggleMenu={this.toggleMenu} />
         }
 
         {
