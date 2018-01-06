@@ -45,12 +45,22 @@
 					text-align: center;
 					font-weight: 200;
 					color: #fff;
-					font-size: 4vh;
 					@include center;
 					flex-direction: column;
-					&>span {
-						font-size: 2.5vh;
+					&>h3,h4,h5,h4>span {
+						margin: 0;
+						font-weight: 200;
+					}
+					&>h3 {
+						font-size: 3.5vh;
+						font-weight: 400;
 						font-weight: 900;
+						// font-weight: 500;
+					}
+					&>h4 {
+						font-size: 4vh;
+						color: #fff;
+						// font-weight: 400;
 					}
 				}
 			}

@@ -6,7 +6,7 @@
 	max-height: 100vh;
 	overflow: hidden;
 	width: 100%;
-	background: #263346;
+  @include backgroundTop;
 	z-index: 2000000000000;
 	@include center;
 	&::after {
