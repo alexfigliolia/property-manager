@@ -143,7 +143,7 @@ export default class Dashboard extends Component {
       sliderClasses: 'slider slider-move',
       footerClasses: 'footer footer-move',
       headerClasses: 'header header-hide-center',
-      headerText: ['Rent', '#5BDC70']
+      headerText: ['Rent', '#11ffbd']
     });
   }
 
@@ -165,7 +165,7 @@ export default class Dashboard extends Component {
       sliderClasses: 'slider slider-move',
       footerClasses: 'footer footer-move',
       headerClasses: 'header header-hide-center',
-      headerText: ['Rent', '#5BDC70']
+      headerText: ['Rent', '#11ffbd']
     });
   }
 

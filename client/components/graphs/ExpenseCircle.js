@@ -2,6 +2,9 @@ import React from 'react';
 import CountUp from 'react-countup';
 
 const ExpenseCircle = (props) => {
+	const spent = props.data.reduce((acc, cur) => acc + cur.solution.spent, 0);
+	let graphVal = (spent*200)/props.total;
+	graphVal = graphVal === 0 || isNaN(graphVal) ? 1 : graphVal;
 	return (
     <div className='circle'>
 			<div className='circ'>
@@ -9,7 +12,7 @@ const ExpenseCircle = (props) => {
 					viewBox="0 0 500 500" 
 					preserveAspectRatio="xMinYMin meet"
 					style={{
-						filter: `drop-shadow( 0px 0px 5px ${props.color})`
+						filter: `drop-shadow( 0px 0px 7.5px ${props.color})`
 					}}>
 					<linearGradient id="expenseGrad">
             <stop offset="0%"  stopColor={props.color2} />
@@ -33,7 +36,7 @@ const ExpenseCircle = (props) => {
 						strokeLinecap="round"
 						style={{
 							strokeDasharray: (Math.PI * (2 * 200)),
-							strokeDashoffset: props.active ? (Math.PI * (2 * 100)) : (Math.PI * (2 * 199))
+							strokeDashoffset: props.active ? (Math.PI * (2 * 200)) - graphVal : (Math.PI * (2 * 199))
 						}} />
 				</svg>
 				<div 
@@ -45,7 +48,7 @@ const ExpenseCircle = (props) => {
 					<h4>
 						<CountUp
 							start={0}
-							end={props.active ? 50 : 0}
+							end={props.active ? (graphVal * 100) / 200 : 0}
 							duration={1.5}
 							useEasing={true}
 							onStart={e => false} />

@@ -23,7 +23,7 @@ const RentCircle = (props) => {
 					viewBox="0 0 500 500" 
 					preserveAspectRatio="xMinYMin meet"
 					style={{
-						filter: `drop-shadow( 0px 0px 5px ${props.color})`
+						filter: `drop-shadow( 0px 0px 7.5px ${props.color})`
 					}}>
 					<defs>
 		        <linearGradient id="rentGrad">

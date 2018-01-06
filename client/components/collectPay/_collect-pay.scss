@@ -16,7 +16,7 @@
 		width: 100%;
 		margin-top: -10%;
 		&>h2 {
-			color: $greenish;
+			color: $purple;
 			font-size: 2em;
 			font-weight: 200;
 		}
@@ -36,13 +36,13 @@
 				width: 100%; max-width: 450px;
 				background: transparent;
 				color: $purple;
-				border-bottom: 1px solid $greenish;
+				border-bottom: 1px solid #11ffbd;
 			}
 		}
 		&>.cr-button {
 			outline: none; border: none;
 			height: 50px; width: 220px;
-			color: #fff; background: $greenish;
+			color: #fff; background: #1AC99A;
 			border-radius: 2.5px;
 			margin: 0; padding: 0;
 			margin-top: 50px;
@@ -62,7 +62,7 @@
 		&>.cr-complete {
 			width: 50px;
 			border-radius: 50%;
-			color: $greenish;
+			color: #1AC99A;
 			transition: color 0.2s 0s, border-radius 0.3s 0s, width 0.3s 0s;
 			&>img {
 				transform: scale(1);

@@ -20,8 +20,8 @@ export default class Graphs extends Component {
   				className='circ-section'>
           <RentCircle
             active={this.props.active}
-            color="#5BDC70"
-            color2="#E7FF69"
+            color="#11ffbd"
+            color2="#aaffa9"
             expRent={this.props.property.monthRentExpected}
             data={this.props.payments.filter(payment => checkDate(payment.date)).reduce((acc, cur) => acc + cur.payment, 0)}
             showRent={this.props.showRent} />
@@ -35,7 +35,8 @@ export default class Graphs extends Component {
             active={this.props.active}
             color="#91A7E0"
             color2="#84EFF6"
-            data={this.props.issues.filter(issue => checkDate(issue.date) && issue.solution.completed && issue.issue === issue.solution.products)} />
+            total={this.props.payments.filter(payment => checkDate(payment.date)).reduce((acc, cur) => acc + cur.payment, 0)}
+            data={this.props.issues.filter(issue => checkDate(issue.date) && issue.solution.completed)} />
   			</div>
 			</div>    
     );

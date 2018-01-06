@@ -4,7 +4,7 @@ import CountUp from 'react-countup';
 const ServiceCircle = (props) => {
 	let graphVal;
 	if(props.data.length > 0) {
-		const total = props.data.filter(payment => !payment.solution.completed).length;
+		const total = props.data.filter(issue => !issue.solution.completed).length;
   	const cap = props.data.length;
   	const val = (total*200)/cap;
   	graphVal = isNaN(val) ? 199 : val;
@@ -20,7 +20,7 @@ const ServiceCircle = (props) => {
 					viewBox="0 0 500 500" 
 					preserveAspectRatio="xMinYMin meet"
 					style={{
-						filter: `drop-shadow( 0px 0px 5px ${props.color})`
+						filter: `drop-shadow( 0px 0px 7.5px ${props.color})`
 					}}>
 					<linearGradient id="serviceGrad">
             <stop offset="0%"  stopColor={props.color2} />

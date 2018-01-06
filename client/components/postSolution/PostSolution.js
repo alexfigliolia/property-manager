@@ -44,7 +44,10 @@ export default class PostSolution extends Component {
           this.handleSubmitReset({ classes: 'ps-button ps-button-error' });
           // this.props.haveAToast('Error:', 'Please check your inputs and try again.');
         } else {
-          setTimeout(() => { this.props.toggleMenu() }, 500);
+          setTimeout(() => { 
+            this.props.toggleMenu();
+            this.setState({classes: 'ps-button'}); 
+          }, 500);
           // this.props.haveAToast('Solved:', `You posted a solution for the "${this.props.issue[0].issue}" service item`);
         }
       });
