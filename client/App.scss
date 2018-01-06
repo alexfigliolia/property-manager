@@ -6,11 +6,11 @@ html,
 body,
 #root,
 .App {
-	font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
 	height: 100%;
 	@include backgroundTop;
 }
 .App {
+	font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
 	position: relative;
 	@include center;
 	height: auto;
@@ -33,3 +33,5 @@ body,
 @import 'components/chat/chat';
 @import 'components/addService/add-service';
 @import 'components/collectPay/collect-pay';
+@import 'components/expenses/expenses';
+@import 'components/paybill/paybill';

@@ -1,3 +1,7 @@
+h1,h2,h3,button{
+	user-select: none;
+}
+
 .header {
 	width: 100%;
 	height: 70px;
@@ -24,6 +28,25 @@
 		opacity: 0;
 		transition-duration: 0.3s;
 	}
+	&>.pay-bill {
+		outline: none; border: none;
+		position: absolute;
+		top: 15px;
+		left: calc(50% - 45px);
+		@include center;
+		margin: 0; padding: 0;
+		height: 40px; width: 100px;
+		background: transparent;
+		color: $redish; font-size: 1.25em;
+		box-sizing: border-box;
+		transform: translateY(-100%);
+		opacity: 0;
+		transition-duration: 0.3s;
+		&:active {
+			opacity: 0.25;
+			transition-delay: 0s;
+		}
+	}
 	&>div {
 		width: 90%;
 		max-width: 450px;
@@ -36,7 +59,6 @@
 			outline: none;
 			border-radius: none;
 			box-sizing: border-box;
-			// border: 1px solid #fff;
 			background: none;
 			position: relative;
 			margin: 0;
@@ -156,6 +178,20 @@
 
 .header-hide-center {
 	&>h1 {
+		transform: translateY(0%);
+		opacity: 1;
+		transition-delay: 0.2s;
+	}
+	&>div>button:nth-of-type(2),
+	&>div>button:nth-of-type(3) {
+		opacity: 0;
+		transform: scale(0);
+		transition-delay: 0s;
+	}
+}
+
+.header-show-paybill {
+	&>.pay-bill {
 		transform: translateY(0%);
 		opacity: 1;
 		transition-delay: 0.2s;

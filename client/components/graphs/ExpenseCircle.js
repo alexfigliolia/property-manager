@@ -3,11 +3,15 @@ import CountUp from 'react-countup';
 
 const ExpenseCircle = (props) => {
 	const spent = props.data.reduce((acc, cur) => acc + cur.solution.spent, 0);
-	let graphVal = (spent*200)/props.total;
-	graphVal = graphVal === 0 || isNaN(graphVal) ? 1 : graphVal;
+	let perc = (spent * 100)/props.total;
+	perc = isNaN(perc) ? 0 : perc;
+	let graphVal = perc === 0 ? 1 : perc;
+	graphVal = (Math.PI * (2 * 200)) - (graphVal*(Math.PI * (2 * 200))) / 100;
 	return (
     <div className='circle'>
-			<div className='circ'>
+			<div 
+				className='circ'
+				onClick={props.showExpenses}>
 				<svg 
 					viewBox="0 0 500 500" 
 					preserveAspectRatio="xMinYMin meet"
@@ -36,7 +40,7 @@ const ExpenseCircle = (props) => {
 						strokeLinecap="round"
 						style={{
 							strokeDasharray: (Math.PI * (2 * 200)),
-							strokeDashoffset: props.active ? (Math.PI * (2 * 200)) - graphVal : (Math.PI * (2 * 199))
+							strokeDashoffset: props.active ? graphVal : (Math.PI * (2 * 199))
 						}} />
 				</svg>
 				<div 
@@ -48,7 +52,7 @@ const ExpenseCircle = (props) => {
 					<h4>
 						<CountUp
 							start={0}
-							end={props.active ? (graphVal * 100) / 200 : 0}
+							end={props.active ? perc : 0}
 							duration={1.5}
 							useEasing={true}
 							onStart={e => false} />

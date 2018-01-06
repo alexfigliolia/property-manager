@@ -36,7 +36,8 @@ export default class Graphs extends Component {
             color="#91A7E0"
             color2="#84EFF6"
             total={this.props.payments.filter(payment => checkDate(payment.date)).reduce((acc, cur) => acc + cur.payment, 0)}
-            data={this.props.issues.filter(issue => checkDate(issue.date) && issue.solution.completed)} />
+            data={this.props.issues.filter(issue => checkDate(issue.date) && issue.solution.completed)}
+            showExpenses={this.props.showExpenses} />
   			</div>
 			</div>    
     );

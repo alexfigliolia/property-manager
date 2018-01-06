@@ -10,6 +10,8 @@ import Rent from '../rent/Rent';
 import Chat from '../chat/Chat';
 import AddService from '../addService/AddService';
 import CollectPay from '../collectPay/CollectPay';
+import Expenses from '../expenses/Expenses';
+import Paybill from '../paybill/Paybill';
 import { checkDate } from '../../../helpers/helpers';
 
 export default class Dashboard extends Component {
@@ -22,12 +24,14 @@ export default class Dashboard extends Component {
       burgerClasses: 'burger',
       serviceClasses: 'service',
       rentClasses: 'rent',
+      expensesClasses: 'expenses',
       sliderClasses: 'slider',
       footerClasses: 'footer',
       postSolutionClasses: 'post-solution',
       serviceImagesClasses: 'service-images',
       addServiceClasses: 'add-service',
       collectPayClasses: 'collect-pay',
+      paybillClasses: 'paybill',
       chatClasses: 'chat',
       currentIssueId: '',
   	}
@@ -88,6 +92,7 @@ export default class Dashboard extends Component {
           serviceClasses: 'service',
           addServiceClasses: 'add-service',
           rentClasses: 'rent',
+          expensesClasses: 'expenses',
           collectPayClasses: 'collect-pay',
           sliderClasses: 'slider',
           footerClasses: 'footer',
@@ -147,6 +152,16 @@ export default class Dashboard extends Component {
     });
   }
 
+  showExpenses = () => {
+    this.setState({
+      burgerClasses: 'burger burger-x',
+      expensesClasses: 'expenses expenses-show',
+      sliderClasses: 'slider slider-move',
+      footerClasses: 'footer footer-move',
+      headerClasses: 'header header-show-paybill',
+    });
+  }
+
   toggleChat = () => {
     this.setState(prevState => {
       return {
@@ -201,7 +216,8 @@ export default class Dashboard extends Component {
                       issues={this.props.issues.filter(issue => issue.propId === prop._id)}
                       property={prop}
                       showService={this.showService}
-                      showRent={this.showRent} />
+                      showRent={this.showRent}
+                      showExpenses={this.showExpenses} />
     							</div>
     						);
     					})
@@ -268,6 +284,20 @@ export default class Dashboard extends Component {
             classes={this.state.addServiceClasses}
             property={this.props.properties[this.state.selectedIndex]}
             toggleMenu={this.toggleMenu} />
+        }
+
+        {
+          this.props.properties.length > 0 &&
+          <Expenses
+            classes={this.state.expensesClasses}
+            expenses={this.props.issues.filter(issue => issue.propId === this.props.properties[this.state.selectedIndex]._id && issue.solution.completed)}
+            property={this.props.properties[this.state.selectedIndex]} />
+        }
+
+        {
+          this.props.properties.length > 0 &&
+          <Paybill 
+            classes={this.state.paybillClasses} />
         }
 
         {

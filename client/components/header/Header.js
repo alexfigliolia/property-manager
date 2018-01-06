@@ -5,6 +5,7 @@ const Header = (props) => {
 		<header className={props.classes}>
 			<h1
 				style={{color: props.headerText[1]}}>{props.headerText[0]}</h1>
+			<button className='pay-bill'>Add New</button>
 			<div>
 				<button
 					onClick={props.toggleChat}>
