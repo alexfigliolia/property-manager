@@ -88,6 +88,13 @@ export default class Dashboard extends Component {
         paybillClasses: 'paybill',
         expensesClasses: 'expenses expenses-show',
       });
+    } else if(this.state.serviceClasses === 'service service-show service-up') {
+      this.setState({
+        burgerClasses: 'burger burger-x', 
+        serviceClasses: 'service service-show',
+        addServiceClasses: 'add-service',
+        headerClasses: 'header header-show-addservice'
+      });
     } else {
       this.setState(prevState => {
         return {
@@ -114,18 +121,21 @@ export default class Dashboard extends Component {
       sliderClasses: 'slider slider-move',
       footerClasses: 'footer footer-move',
       headerClasses: 'header header-hide-center',
-      headerText: ['Service', '#F66463']
+      headerClasses: 'header header-show-addservice',
     });
   }
 
   showAddService = () => {
-    this.setState({
-      burgerClasses: 'burger burger-x',
-      addServiceClasses: 'add-service add-service-show',
-      sliderClasses: 'slider slider-move',
-      footerClasses: 'footer footer-move',
-      headerClasses: 'header header-hide-center',
-      headerText: ['Service', '#F66463']
+    this.setState(prevState => {
+      return {
+        burgerClasses: prevState.serviceClasses === 'service service-show' ? 'burger burger-x burger-arrow' : 'burger burger-x',
+        addServiceClasses: 'add-service add-service-show',
+        serviceClasses: prevState.serviceClasses === 'service service-show' ? 'service service-show service-up' : 'service',
+        sliderClasses: 'slider slider-move',
+        footerClasses: 'footer footer-move',
+        headerClasses: 'header header-hide-center',
+        headerText: ['Service', '#F66463']
+      }
     });
   }
 
@@ -143,7 +153,7 @@ export default class Dashboard extends Component {
       burgerClasses: 'burger burger-x burger-arrow',
       paybillClasses: 'paybill paybill-show',
       expensesClasses: 'expenses expenses-show expenses-hide',
-      serviceClasses: 'service service-show service-up'
+      headerText: ['Expenses', '#91A7E0']
     });
   }
 
@@ -213,7 +223,8 @@ export default class Dashboard extends Component {
             toggleChat={this.toggleChat}
             showAddService={this.showAddService}
             collectPayShow={this.collectPayShow}
-            paybill={this.paybill} />
+            paybill={this.paybill}
+            addService={this.showAddService} />
     			<div 
     				className={this.state.sliderClasses} 
     				id="slider" 

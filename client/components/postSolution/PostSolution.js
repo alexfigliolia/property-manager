@@ -30,7 +30,7 @@ export default class PostSolution extends Component {
   submit = () => {
   	const { solution, products, budget, checked } = this.state;
   	const bValue = checked ? parseFloat(budget) : 0;
-  	if(solution !== '' && solution !== ' ') {
+  	if(solution !== '' && solution !== ' ' && !isNaN(bValue)) {
   		const obj = {
         completed: false,
         description: solution,

@@ -12,8 +12,10 @@
 	&>div {
 		@include center;
 		flex-direction: column;
+		justify-content: flex-start;
 		width: 90%;
 		margin: auto;
+		min-height: 100%;
 		// max-width: 900px;
 		color: $purple;
 		margin-bottom: 20px;

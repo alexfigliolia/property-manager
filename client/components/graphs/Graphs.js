@@ -12,6 +12,9 @@ export default class Graphs extends Component {
   }
 
   render = () => {
+    const paymentTotal = this.props.payments
+      .filter(payment => checkDate(payment.date))
+      .reduce((acc, cur) => acc + cur.payment, 0);
     return (
     	<div 
 				className="circ-section-container"
@@ -23,7 +26,7 @@ export default class Graphs extends Component {
             color="#11ffbd"
             color2="#aaffa9"
             expRent={this.props.property.monthRentExpected}
-            data={this.props.payments.filter(payment => checkDate(payment.date)).reduce((acc, cur) => acc + cur.payment, 0)}
+            data={paymentTotal}
             showRent={this.props.showRent} />
           <ServiceCircle 
             active={this.props.active}
@@ -35,7 +38,7 @@ export default class Graphs extends Component {
             active={this.props.active}
             color="#91A7E0"
             color2="#84EFF6"
-            total={this.props.payments.filter(payment => checkDate(payment.date)).reduce((acc, cur) => acc + cur.payment, 0)}
+            total={paymentTotal}
             data={this.props.issues.filter(issue => checkDate(issue.date) && issue.solution.completed)}
             showExpenses={this.props.showExpenses} />
   			</div>
