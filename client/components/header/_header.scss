@@ -32,10 +32,11 @@ h1,h2,h3,button{
 		outline: none; border: none;
 		position: absolute;
 		top: 15px;
-		left: calc(50% - 45px);
+		left: calc(50% - 75px);
 		@include center;
+		text-align: center;
 		margin: 0; padding: 0;
-		height: 40px; width: 100px;
+		height: 40px; width: 150px;
 		background: transparent;
 		color: $redish; font-size: 1.25em;
 		box-sizing: border-box;
@@ -47,6 +48,7 @@ h1,h2,h3,button{
 			transition-delay: 0s;
 		}
 	}
+	&>.collectrent { color: $greenish } 
 	&>div {
 		width: 90%;
 		max-width: 450px;
@@ -206,6 +208,20 @@ h1,h2,h3,button{
 
 .header-show-addservice {
 	&>.addservice {
+		transform: translateY(0%);
+		opacity: 1;
+		transition-delay: 0.2s;
+	}
+	&>div>button:nth-of-type(2),
+	&>div>button:nth-of-type(3) {
+		opacity: 0;
+		transform: scale(0);
+		transition-delay: 0s;
+	}
+}
+
+.header-show-collectrent {
+	&>.collectrent {
 		transform: translateY(0%);
 		opacity: 1;
 		transition-delay: 0.2s;

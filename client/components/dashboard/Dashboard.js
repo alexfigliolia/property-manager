@@ -98,6 +98,13 @@ export default class Dashboard extends Component {
         addServiceClasses: 'add-service',
         headerClasses: 'header header-show-addservice'
       });
+    } else if(this.state.rentClasses === 'rent rent-show rent-move') {
+      this.setState({
+        burgerClasses: 'burger burger-x',
+        rentClasses: 'rent rent-show',
+        collectPayClasses: 'collect-pay',
+        headerClasses: 'header header-show-collectrent'
+      });
     } else {
       this.setState(prevState => {
         return {
@@ -179,8 +186,7 @@ export default class Dashboard extends Component {
       rentClasses: 'rent rent-show',
       sliderClasses: 'slider slider-move',
       footerClasses: 'footer footer-move',
-      headerClasses: 'header header-hide-center',
-      headerText: ['Rent', '#11ffbd']
+      headerClasses: 'header header-show-collectrent',
     });
   }
 
@@ -206,13 +212,16 @@ export default class Dashboard extends Component {
   }
 
   collectPayShow = () => {
-    this.setState({
-      burgerClasses: 'burger burger-x',
-      collectPayClasses: 'collect-pay collect-pay-show',
-      sliderClasses: 'slider slider-move',
-      footerClasses: 'footer footer-move',
-      headerClasses: 'header header-hide-center',
-      headerText: ['Rent', '#11ffbd']
+    this.setState(prevState => {
+      return {
+        burgerClasses: prevState.rentClasses === 'rent rent-show' ? 'burger burger-x burger-arrow' : 'burger burger-x',
+        collectPayClasses: 'collect-pay collect-pay-show',
+        sliderClasses: 'slider slider-move',
+        footerClasses: 'footer footer-move',
+        headerClasses: 'header header-hide-center',
+        headerText: ['Rent', '#11ffbd'],
+        rentClasses: prevState.rentClasses === 'rent rent-show' ? 'rent rent-show rent-move' : 'rent',
+      }
     });
   }
 
@@ -231,7 +240,8 @@ export default class Dashboard extends Component {
             showAddService={this.showAddService}
             collectPayShow={this.collectPayShow}
             paybill={this.paybill}
-            addService={this.showAddService} />
+            addService={this.showAddService}
+            collectRent={this.collectPayShow} />
     			<div 
     				className={this.state.sliderClasses} 
     				id="slider" 

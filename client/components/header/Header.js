@@ -11,6 +11,9 @@ const Header = (props) => {
 			<button 
 				className='hb addservice'
 				onClick={props.addService}>Add New</button>
+			<button 
+				className='hb collectrent'
+				onClick={props.collectRent}>Collect Rent</button>
 			<div>
 				<button
 					onClick={props.toggleChat}>
