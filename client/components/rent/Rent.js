@@ -20,6 +20,7 @@ const Rent = (props) => {
                   <h3>Payment:</h3>
   								<div>
   									<h3><strong>Date:&nbsp;</strong>{`${m} ${date}, ${year}`}</h3>
+                    <h3><strong>From:&nbsp;</strong>{payment.label}</h3>
   									<h3><strong>Amount:&nbsp;</strong>${commafy(parseFloat(payment.payment).toFixed(2))}</h3>
   								</div>
   							</div>

@@ -9,21 +9,10 @@ const properties = new ReactiveVar([]);
 const group = new ReactiveVar({});
 const user = new ReactiveVar({});
 
-function updateConvos(val) {
-  convos.set(val);
-}
-
-function updateProperties(arr) {
-  properties.set(arr);
-}
-
-function setGroup(val) {
-  group.set(val);
-}
-
-function setUser(val) {
-  user.set(val);
-}
+function updateConvos(val) { convos.set(val) }
+function updateProperties(arr) { properties.set(arr) }
+function setGroup(val) { group.set(val) }
+function setUser(val) { user.set(val) }
 
 Accounts.onCreateUser((options, user) => {
   user.name = options.name;
@@ -92,7 +81,7 @@ Meteor.publish('payments', function() {
       props.forEach( prop => ids.push(prop._id) );
       updateProperties(ids);
       let filter = { propId: { $in: properties.curValue } }; 
-      return Payments.find(filter, { fields: { propId: true, payment: true, date: true }});
+      return Payments.find(filter, { fields: { propId: 1, payment: 1, label: 1, date: 1 }});
     } else {
       return this.ready();
     }
