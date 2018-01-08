@@ -24,7 +24,7 @@ export default class CollectPay extends Component {
 	  			console.log(err);
 	  		} else {
 	  			setTimeout(() => {
-	  				this.setState({ crClasses: 'cr-button', payment: '' }, this.props.toggleMenu);
+	  				this.setState({ crClasses: 'cr-button', payment: '', label: '' }, this.props.toggleMenu);
 	  			}, 1000);
 	  		}
 	  	});
