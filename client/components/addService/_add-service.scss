@@ -15,11 +15,17 @@
 		flex-direction: column;
 		width: 100%;
 		margin-top: -10%;
+		@media #{$mq-h-1024} {
+			margin-top: -15%;
+		}
 		&>h2 {
 			color: $purple;
 			font-size: 2em;
 			font-weight: 200;
 			margin-bottom: 10px;
+			@media #{$mq-h-1024} {
+				font-size: 3em;
+			}
 		}
 		&>p {
 			margin-top: 5px;
@@ -28,18 +34,23 @@
 			text-align: center;
 			width: 80%;
 			font-weight: 500;
+			@media #{$mq-h-1024} {
+				font-size: 1.4em;
+			}
 		}
 		&>div {
 			@include center;
 			flex-direction: column;
 			width: 80%;
-			flex-direction: column;
 			margin-top: 40px;
 			&>label {
 				margin-bottom: 20px;
 				color: $purple;
 				font-size: 1.2em;
 				color: $redish;
+				@media #{$mq-h-1024} {
+					font-size: 1.4em;
+				}
 			}
 			&>input {
 				outline: none; border:none;
@@ -47,7 +58,12 @@
 				background: transparent;
 				border-bottom: 1px solid $redish;
 				border-radius: 0; padding: 5px;
-				color: $purple;
+				color: #fff;
+				@media #{$mq-h-1024} {
+					font-size: 1.4em;
+					margin-top: 20px;
+					max-width: 500px;
+				}
 
 			}
 		}
@@ -61,12 +77,20 @@
 			position: relative;
 			overflow: hidden;
 			transition-duration: 0.3s;
+			@media #{$mq-h-1024} {
+				width: 280px; height: 60px;
+				font-size: 1.1em;
+				margin-top: 65px;
+			}
 			&>img {
 				position: absolute;
 				height: 35px; width: 35px;
 				top: 7.5px; left: 7.5px;
 				transform: scale(0);
 				transition-duration: 0.3s;
+				@media #{$mq-h-1024} {
+					width: 45px; height: 45px;
+				}
 			}
 		}
 		&>.psr-complete {
@@ -74,6 +98,9 @@
 			color: $redish;
 			border-radius: 50%;
 			transition: color 0.2s 0s, border-radius 0.3s 0s, width 0.3s 0s;
+			@media #{$mq-h-1024} {
+				width: 60px;
+			}
 			&>img {
 				transform: scale(1);
 				transition-delay: 0.3s;

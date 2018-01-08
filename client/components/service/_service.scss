@@ -46,6 +46,9 @@
 					font-size: 2em;
 					color: $purple;
 					text-align: center;
+					@media #{$mq-h-1024} {
+						font-size: 2.5em;
+					}
 				}
 			}
 		}

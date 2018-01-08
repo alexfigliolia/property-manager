@@ -51,7 +51,7 @@ export default class Dashboard extends Component {
       pageDots: false,
       selectedAttraction: 0.2,
       friction: 0.7
-    }
+    };
     this.flkty = new Flickity(carousel, options);
     this.flkty.on('cellSelect', this.updateSelected);
     this.setState({selectedIndex: 0});
@@ -74,19 +74,22 @@ export default class Dashboard extends Component {
       this.setState({
         burgerClasses: 'burger burger-x', 
         postSolutionClasses: 'post-solution',
-        serviceClasses: 'service service-show'
+        serviceClasses: 'service service-show',
+        headerClasses: 'header header-show-addservice',
       });
     } else if(this.state.serviceImagesClasses === 'service-images service-images-show') {
       this.setState({
         burgerClasses: 'burger burger-x', 
         serviceImagesClasses: 'service-images',
-        serviceClasses: 'service service-show'
+        serviceClasses: 'service service-show',
+        headerClasses: 'header header-show-addservice',
       });
     } else if(this.state.paybillClasses === 'paybill paybill-show') {
       this.setState({
         burgerClasses: 'burger burger-x', 
         paybillClasses: 'paybill',
         expensesClasses: 'expenses expenses-show',
+        headerClasses: 'header header-show-paybill',
       });
     } else if(this.state.serviceClasses === 'service service-show service-up') {
       this.setState({
@@ -120,7 +123,6 @@ export default class Dashboard extends Component {
       serviceClasses: 'service service-show',
       sliderClasses: 'slider slider-move',
       footerClasses: 'footer footer-move',
-      headerClasses: 'header header-hide-center',
       headerClasses: 'header header-show-addservice',
     });
   }
@@ -144,7 +146,9 @@ export default class Dashboard extends Component {
       currentIssueId: e.target.dataset.id,
       burgerClasses: 'burger burger-x burger-arrow',
       postSolutionClasses: 'post-solution post-solution-show',
-      serviceClasses: 'service service-show service-up'
+      serviceClasses: 'service service-show service-up',
+      headerClasses: 'header header-hide-center',
+      headerText: ['Service', '#F66463']
     });
   }
 
@@ -153,6 +157,7 @@ export default class Dashboard extends Component {
       burgerClasses: 'burger burger-x burger-arrow',
       paybillClasses: 'paybill paybill-show',
       expensesClasses: 'expenses expenses-show expenses-hide',
+      headerClasses: 'header header-hide-center',
       headerText: ['Expenses', '#91A7E0']
     });
   }
@@ -162,7 +167,9 @@ export default class Dashboard extends Component {
       currentIssueId: e.target.dataset.id,
       burgerClasses: 'burger burger-x burger-arrow',
       serviceImagesClasses: 'service-images service-images-show',
-      serviceClasses: 'service service-show service-up'
+      serviceClasses: 'service service-show service-up',
+      headerClasses: 'header header-hide-center',
+      headerText: ['Service', '#F66463']
     });
   }
 

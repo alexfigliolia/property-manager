@@ -9,38 +9,61 @@
 	transform: translateX(100%);
 	transition-duration: 0.3s;
 	z-index: 20;
+	@include center;
 	&>div {
 		@include center;
 		flex-direction: column;
 		width: 85%;
 		max-width: 400px;
-		margin: auto;
+		@media #{$mq-670} {
+			margin-top: -7.5%;
+		}
+		@media #{$mq-h-1024} {
+			max-width: 500px;
+		}
 		&>h2 {
+			margin-top: 0;
 			color: $purple;
 			font-weight: 200;
 			font-size: 2em;
 			margin-bottom: 10px;
+			@media #{$mq-h-1024} {
+				font-size: 3em;
+				margin-bottom: 20px;
+			}
 		}
 		&>h3 {
 			margin-top: 0px;
 			font-size: 1.2em;
 			color: $purple;
 			font-weight: 600;
+			@media #{$mq-h-1024} {
+				font-size: 1.5em;
+			}
 		}
 		&>div {
 			@include center;
 			flex-direction: column;
 			width: 100%;
-			margin-top: 30px;
+			margin-top: 10px;
+			@media #{$mq-h-1024} {
+				margin-top: 40px;
+			}
 			&>div {
 				@include center;
 				flex-direction: column;
 				width: 100%;
-				margin-bottom: 30px;
+				margin-bottom: 40px;
+				@media #{$mq-h-1024} {
+					margin-bottom: 60px;
+				}
 				&>label {
 					color: $purple;
 					margin-bottom: 20px;
 					font-size: 1.2em;
+					@media #{$mq-h-1024} {
+						font-size: 1.5em;
+					}
 				}
 				&>input {
 					outline: none; border: none;
@@ -49,6 +72,10 @@
 					border-radius: 0;
 					width: 100%; color: #fff;
 					margin: 0; padding: 5px;
+					@media #{$mq-h-1024} {
+						border-bottom: 2px solid $redish;
+						font-size: 1.5em;
+					}
 				}
 			}
 		}
@@ -63,12 +90,19 @@
 			transition-duration: 0.3s;
 			position: relative;
 			overflow: hidden;
+			@media #{$mq-h-1024} {
+				width: 280px; height: 60px;
+				font-size: 1.1em;
+			}
 			&>img {
 				position: absolute;
 				top: 7.5px; left: 7.5px;
 				width: 35px; height: 35px;
 				transform: scale(0);
 				transition-duration: 0.3s;
+				@media #{$mq-h-1024} {
+					width: 45px; height: 45px;
+				}
 			}
 		}
 		&>.pb-complete {
@@ -76,6 +110,9 @@
 			border-radius: 50%;
 			color: $redish;
 			transform: width 0.3s 0s, border-radius 0.3s 0s, color 0.2s 0s;
+			@media #{$mq-h-1024} {
+				width: 60px;
+			}
 			&>img {
 				transform: scale(1);
 				transition-delay: 0.3s;

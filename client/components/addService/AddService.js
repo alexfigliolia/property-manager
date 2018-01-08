@@ -46,8 +46,7 @@ export default class AddService extends Component {
   			} else {
           // this.props.haveAToast(`${property}:`, 'A new outstanding issue was created for your property');
   				setTimeout(() => {
-  					this.setState({ text: "", classes: "psr" });
-  					this.props.toggleMenu();
+  					this.setState({ text: "", classes: "psr" }, this.props.toggleMenu);
   				}, 1000);
   			}
   		});

@@ -36,7 +36,8 @@ export default class PayBill extends Component {
   				// console.log(err);
   			} else {
   				setTimeout(() => {
-  					this.setState({ classes: 'pb', amount: '', expense: '' }, this.props.toggleMenu);
+  					this.setState({ classes: 'pb', amount: '', expense: '' }, 
+            this.props.toggleMenu);
   				}, 800)
   			}
   		});
@@ -71,7 +72,7 @@ export default class PayBill extends Component {
     			<button 
     				className={this.state.classes}
     				onClick={this.submit}>
-    					Pay a bill
+    					Submit
     				<img src='check.svg' alt='bill payed!' />
     			</button>
     		</div>

@@ -24,11 +24,17 @@
 			text-align: center;
 			width: 90%;
 			margin-bottom: 10px;
+			@media #{$mq-h-1024} {
+				font-size: 2.5em;
+			}
 		}
 		&>h3 {
 			margin-top: 0px;
 			font-size: 1.2em;
 			color: $purple;
+			@media #{$mq-h-1024} {
+				font-size: 1.4em;
+			}
 		}
 		&>.select-dates {
 			margin-top: 20px;
@@ -37,12 +43,18 @@
 			justify-content: space-between;
 			margin-bottom: 50px;
 			max-width: 455px;
+			@media #{$mq-h-1024} {
+				max-width: 555px;
+			}
 			&>div {
 				@include center;
 				flex-direction: column;
 				width: 50%;
 				&>label {
 					color: $purple;
+					@media #{$mq-h-1024} {
+						font-size: 1.2em;
+					}
 				}
 				&>input {
 					outline: none; border: none;
@@ -55,6 +67,9 @@
 					height: 35px;
 					@include center;
 					text-align: center;
+					@media #{$mq-h-1024} {
+						font-size: 1.2em;
+					}
 				}
 			}
 		}
