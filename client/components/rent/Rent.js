@@ -10,7 +10,7 @@ const Rent = (props) => {
   			<p>{`At ${props.property.property}`}</p>
   			<div>
   				{
-  					props.payments.map((payment, i) => {
+  					props.payments.reverse().map((payment, i) => {
   						const d = new Date(payment.date);
   						const m = months[d.getMonth()];
   						const date = d.getDate();

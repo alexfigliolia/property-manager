@@ -38,6 +38,9 @@
 			flex-direction: column;
 			width: 85%;
 			margin-bottom: 30px;
+			@media #{$mq-375} {
+				margin-bottom: 45px;	
+			}
 			@media #{$mq-670} {
 				margin-bottom: 60px;	
 			}
