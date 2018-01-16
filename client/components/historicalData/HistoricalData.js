@@ -28,7 +28,7 @@ export default class Expenses extends Component {
     return (
     	<section className={this.props.classes}>
     		<div>
-    			<h2>Recorded Expenses</h2>
+    			<h2>{this.props.title}</h2>
     			<h3>{`At ${this.props.property.property}`}</h3>
     			<div className='select-dates'>
     				<div>
@@ -50,8 +50,9 @@ export default class Expenses extends Component {
     			</div>
     			<div className='exp-container'>
     				{
-    					this.props.expenses.length > 0 &&
-    					this.props.expenses.map((exp, i) => {
+              this.props.for === 'expenses' &&
+    					this.props.data.length > 0 &&
+    					this.props.data.map((exp, i) => {
     						const d = new Date(exp.date);
     						if( d >= new Date( this.state.range[0] + "/" + parseInt(this.state.range[1]) + "/1") &&
                   d <= new Date(parseInt(this.state.range[2]), parseInt(this.state.range[3]), 0, 23, 59, 59) &&
@@ -73,6 +74,29 @@ export default class Expenses extends Component {
 	    					}
     					})
     				}
+            {
+              this.props.for === 'rent' &&
+              this.props.data.map((payment, i) => {
+                const d = new Date(payment.date);
+                if( d >= new Date( this.state.range[0] + "/" + parseInt(this.state.range[1]) + "/1") &&
+                  d <= new Date(parseInt(this.state.range[2]), parseInt(this.state.range[3]), 0, 23, 59, 59)) 
+                {  
+                  const m = this.months[d.getMonth()];
+                  const date = d.getDate();
+                  const year = d.getUTCFullYear();
+                  return (
+                    <div className='rent-payment' key={i}>
+                      <h3>Payment:</h3>
+                      <div>
+                        <h3><strong>Date:&nbsp;</strong>{`${m} ${date}, ${year}`}</h3>
+                        <h3><strong>From:&nbsp;</strong>{payment.label}</h3>
+                        <h3><strong>Amount:&nbsp;</strong>${commafy(parseFloat(payment.payment).toFixed(2))}</h3>
+                      </div>
+                    </div>
+                  );
+                }
+              })
+            }
     			</div>
     		</div>
     	</section>    

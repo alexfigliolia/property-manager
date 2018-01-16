@@ -6,12 +6,12 @@ import Footer from '../footer/Footer';
 import Service from '../service/Service';
 import PostSolution from '../postSolution/PostSolution';
 import ServiceImages from '../serviceImages/ServiceImages';
-import Rent from '../rent/Rent';
 import Chat from '../chat/Chat';
 import AddService from '../addService/AddService';
 import CollectPay from '../collectPay/CollectPay';
-import Expenses from '../expenses/Expenses';
+import HistoricalData from '../historicalData/HistoricalData';
 import Paybill from '../paybill/Paybill';
+import Menu from '../menu/Menu';
 import { checkDate } from '../../../helpers/helpers';
 
 export default class Dashboard extends Component {
@@ -34,6 +34,7 @@ export default class Dashboard extends Component {
       paybillClasses: 'paybill',
       chatClasses: 'chat',
       currentIssueId: '',
+      menuClasses: 'menu'
   	}
   	this.flkty = null;
   }
@@ -117,8 +118,9 @@ export default class Dashboard extends Component {
           rentClasses: 'rent',
           expensesClasses: 'expenses',
           collectPayClasses: 'collect-pay',
-          sliderClasses: 'slider',
-          footerClasses: 'footer',
+          sliderClasses: prevState.burgerClasses === 'burger' ? 'slider slider-move' : 'slider',
+          footerClasses: prevState.burgerClasses === 'burger' ? 'footer footer-move' : 'footer',
+          menuClasses: prevState.burgerClasses === 'burger' ? 'menu menu-show' : 'menu'
         }
       });
     }
@@ -139,6 +141,7 @@ export default class Dashboard extends Component {
       return {
         burgerClasses: prevState.serviceClasses === 'service service-show' ? 'burger burger-x burger-arrow' : 'burger burger-x',
         addServiceClasses: 'add-service add-service-show',
+        menuClasses: 'menu',
         serviceClasses: prevState.serviceClasses === 'service service-show' ? 'service service-show service-up' : 'service',
         sliderClasses: 'slider slider-move',
         footerClasses: 'footer footer-move',
@@ -163,6 +166,7 @@ export default class Dashboard extends Component {
     this.setState({
       burgerClasses: 'burger burger-x burger-arrow',
       paybillClasses: 'paybill paybill-show',
+      menuClasses: 'menu',
       expensesClasses: 'expenses expenses-show expenses-hide',
       headerClasses: 'header header-hide-center',
       headerText: ['Expenses', '#91A7E0']
@@ -216,6 +220,7 @@ export default class Dashboard extends Component {
       return {
         burgerClasses: prevState.rentClasses === 'rent rent-show' ? 'burger burger-x burger-arrow' : 'burger burger-x',
         collectPayClasses: 'collect-pay collect-pay-show',
+        menuClasses: 'menu',
         sliderClasses: 'slider slider-move',
         footerClasses: 'footer footer-move',
         headerClasses: 'header header-hide-center',
@@ -289,15 +294,6 @@ export default class Dashboard extends Component {
 
         {
           this.props.properties.length > 0 &&
-          <Rent
-            classes={this.state.rentClasses}
-            payments={this.props.payments.filter(payment => payment.propId === this.props.properties[this.state.selectedIndex]._id && checkDate(payment.date))}
-            property={this.props.properties[this.state.selectedIndex]}
-            toggleMenu={this.toggleMenu} />
-        }
-
-        {
-          this.props.properties.length > 0 &&
           <CollectPay 
             classes={this.state.collectPayClasses}
             property={this.props.properties[this.state.selectedIndex]}
@@ -332,10 +328,22 @@ export default class Dashboard extends Component {
 
         {
           this.props.properties.length > 0 &&
-          <Expenses
+          <HistoricalData
             classes={this.state.expensesClasses}
-            expenses={this.props.issues.filter(issue => issue.propId === this.props.properties[this.state.selectedIndex]._id && issue.solution.completed)}
-            property={this.props.properties[this.state.selectedIndex]} />
+            data={this.props.issues.filter(issue => issue.propId === this.props.properties[this.state.selectedIndex]._id && issue.solution.completed)}
+            property={this.props.properties[this.state.selectedIndex]}
+            for='expenses'
+            title='Recorded Expenses' />
+        }
+
+        {
+          this.props.properties.length > 0 &&
+          <HistoricalData
+            classes={this.state.rentClasses}
+            data={this.props.payments.filter(payment => payment.propId === this.props.properties[this.state.selectedIndex]._id)}
+            property={this.props.properties[this.state.selectedIndex]}
+            for='rent'
+            title='Rent Payments' />
         }
 
         {
@@ -354,6 +362,12 @@ export default class Dashboard extends Component {
             conversations={this.props.conversations}
             toggleChat={this.toggleChat} />
         }
+
+        <Menu 
+          classes={this.state.menuClasses}
+          collectRent={this.collectPayShow}
+          addService={this.showAddService}
+          paybill={this.paybill} />
 
     	</section>  
     );

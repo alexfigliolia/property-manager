@@ -1,0 +1,83 @@
+.menu {
+	position: fixed;
+	top: 50px;
+	left: 0;
+	height: calc(100% - 50px);
+	width: 100%;
+	transform: translateX(-100%);
+	transition-duration: 0.3s;
+	z-index: 20;
+	@include center;
+	&>nav {
+		@include center;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 70%;
+		width: 100%;
+		margin-top: -7.5%;
+		&>a {
+			text-direction: none;
+			color: $purple;
+			font-size: 5vh;
+			cursor: pointer;
+			font-weight: 200;
+			width: 100%; max-width: 450px;
+			height: 25%;
+			@include center;
+			position: relative;
+			&:visited { 
+				text-direction: none;
+				color: $purple;
+			}
+			&::after {
+				content: '';
+				position: absolute;
+				top: 0; left: 10%;
+				height: 100%; width: 80%;
+				border-top: 1px solid $purple;
+				border-bottom: 1px solid $purple;
+				box-sizing: border-box;
+				transform: scaleX(0);
+				transition-duration: 0.3s;
+			}
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0; left: 10%;
+				height: 100%; width: 80%;
+				border-right: 1px solid $purple;
+				border-left: 1px solid $purple;
+				box-sizing: border-box;
+				transform: scaleY(0);
+				transition-duration: 0.3s;
+				transition-delay: 0.3s;
+			}
+			&:hover::after {
+				transform: scaleX(1);
+			}
+			&:hover::before {
+				transform: scaleY(1);
+			}
+		}
+		&>button {
+			margin-top: 20px;
+			outline: none; border: none;
+			height: 55px; width: 80%;
+			max-width: 400px;
+			border-radius: 2.5px;
+			border: 2px solid $redish;
+			color: $redish; background: transparent;
+			font-size: 3.5vh;
+			font-weight: 900;
+			transition-duration: 0.15s;
+			&:active {
+				opacity: 0.25;
+			}
+		}
+	}
+}
+
+.menu-show {
+	transform: translateX(0%);
+	transition-delay: 0.2s;
+}
