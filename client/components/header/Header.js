@@ -40,6 +40,10 @@ const Header = (props) => {
 							c0,1.288-1.045,2.332-2.332,2.332c-1.289,0-2.334-1.044-2.334-2.332s1.045-2.333,2.334-2.333
 							C32.094,16.226,33.139,17.271,33.139,18.559z"/>
 					</svg>
+					{
+						props.unread.length > 0 &&
+						<div className='indic'>{props.unread.length}</div>
+					}
 				</button>
 				<button
 					onClick={props.showAddService}>

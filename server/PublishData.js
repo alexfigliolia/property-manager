@@ -20,6 +20,7 @@ Accounts.onCreateUser((options, user) => {
   user.groupId = options.groupId,
   user.groupPassword = options.groupPasswrd;
   user.groupName = options.groupName;
+  user.unread = [];
   setUser(user);
   return user;
 });
@@ -37,7 +38,8 @@ Meteor.publish('userData', function() {
       fields: {
         "name" : 1,
         "groupId": 1,
-        "_id": 1
+        "_id": 1,
+        "unread": 1,
       }
     });
   } else {

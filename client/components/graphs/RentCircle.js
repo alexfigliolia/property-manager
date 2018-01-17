@@ -13,6 +13,7 @@ const RentCircle = (props) => {
 	}
 	const gvValid = (Math.PI * (2 * graphVal)) < 0 ? 0 : (Math.PI * (2 * graphVal));
 	const sdo = props.active ? gvValid : (Math.PI * (2 * 199));
+	const rotateVal = 360 - ((graphVal*360)/100);
   return (
      <div className='circle'>
 			<div 
@@ -52,6 +53,16 @@ const RentCircle = (props) => {
 							strokeDashoffset: sdo
 						}} />
 				</svg>
+				<img 
+					src='ticks.png'
+					style={{
+						transform: props.active ? `rotate(${-1 * rotateVal}deg)` : 'rotate(0deg)'
+					}} />
+				<img 
+					src='ticks.png'
+					style={{
+						transform: props.active ? `rotate(${rotateVal}deg)` : 'rotate(0deg)'
+					}} />
 				<div 
 					className="title"
 					style={{

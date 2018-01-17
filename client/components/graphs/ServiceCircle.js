@@ -11,6 +11,7 @@ const ServiceCircle = (props) => {
 	} else {
 		graphVal = 199;
 	}
+	const rotateVal = 360 - ((graphVal*360)/100);
   return (
      <div className='circle'>
 			<div 
@@ -47,6 +48,16 @@ const ServiceCircle = (props) => {
 							strokeDashoffset: props.active ? (Math.PI * (2 * graphVal)) : (Math.PI * (2 * 199))
 						}} />
 				</svg>
+				<img 
+					src='ticks.png'
+					style={{
+						transform: props.active ? `rotate(${-1 * rotateVal}deg)` : 'rotate(0deg)'
+					}} />
+				<img 
+					src='ticks.png'
+					style={{
+						transform: props.active ? `rotate(${rotateVal}deg)` : 'rotate(0deg)'
+					}} />
 				<div 
 					className="title"
 					style={{

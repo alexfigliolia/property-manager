@@ -246,7 +246,8 @@ export default class Dashboard extends Component {
             collectPayShow={this.collectPayShow}
             paybill={this.paybill}
             addService={this.showAddService}
-            collectRent={this.collectPayShow} />
+            collectRent={this.collectPayShow}
+            unread={this.props.unread === undefined ? [] : this.props.unread} />
     			<div 
     				className={this.state.sliderClasses} 
     				id="slider" 
@@ -360,7 +361,8 @@ export default class Dashboard extends Component {
             classes={this.state.chatClasses} 
             messages={this.props.messages}
             conversations={this.props.conversations}
-            toggleChat={this.toggleChat} />
+            toggleChat={this.toggleChat}
+            unread={this.props.unread} />
         }
 
         <Menu 

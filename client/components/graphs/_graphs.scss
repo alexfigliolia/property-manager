@@ -21,7 +21,18 @@
 				width: 100%;
 				padding-bottom: 100%;
 				cursor: pointer;
-				background: url('ticks.png') no-repeat center/75%;
+				&>img {
+					position: absolute;
+					top: 12.5%; left: 12.5%;
+					height: 75%; width: 75%;
+					z-index: 1;
+					transition-timing-function: cubic-bezier(0.99, 0.01, 0.62, 0.94);
+					transition: transform 0.8s 0.15s;
+					&:last-of-type {
+						top: 17.5%; left: 17.5%;
+						height: 65%; width: 65%;
+					}
+				}
 				&>svg {
 					@include center;
 					position: absolute;
@@ -31,6 +42,7 @@
 					width: 100%;
 					transform: rotate(-90deg);
 					background: transparent;
+					z-index: 3;
 					&>circle {
 						transition-timing-function: cubic-bezier(0.99, 0.01, 0.62, 0.94);
 						transition: stroke-dashoffset 0.8s 0.15s, stroke-dasharray 0.8s 0.15s;
@@ -47,6 +59,7 @@
 					color: #fff;
 					@include center;
 					flex-direction: column;
+					z-index: 4;
 					&>h3,h4,h5,h4>span {
 						margin: 0;
 						font-weight: 200;

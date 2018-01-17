@@ -53,6 +53,16 @@
 					&:first-of-type {
 						background: transparent url('contacts.svg') no-repeat center;
 						background-size: contain;
+						position: relative;
+						&>.indic {
+							position: absolute;
+							top: 0; right: -17.5px;
+							height: 22.5px; width: 22.5px;
+							background: $redish; color: #fff;
+							border-radius: 50%;
+							@include center;
+							font-size: 0.8em;
+						}
 					}
 					&:last-of-type {
 						background: transparent url('arrow-right.svg') no-repeat center;
@@ -205,6 +215,16 @@
 					width: 100%;
 					color: $purple;
 					cursor: pointer;
+					position: relative;
+					&>.indic {
+						position: absolute;
+						top: calc(50% - 11.25px); right: 10px;
+						height: 25px; width: 25px;
+						background: $redish; color: #fff;
+						border-radius: 50%;
+						@include center;
+						font-size: 0.8em;
+					}
 				}
 				&>.mc-group {
 					border-top: 0.5px solid $purple;

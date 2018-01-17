@@ -29,6 +29,10 @@ export default class Chat extends Component {
     if(nextProps.conversations.length > 0) {
       this.getGroup(nextProps.conversations);
     }
+    if(nextProps.classes === 'chat chat-show' &&
+      nextProps.classes !== this.props.classes) {
+      this.removeNoties();
+    }
   }
 
   getGroup = (convos) => {
@@ -74,7 +78,10 @@ export default class Chat extends Component {
   	this.setState({
   		currentChat: {name: cc, _id: id},
   		conversation: convo[0]
-  	}, this.toggleContacts);
+  	}, () => {
+      this.toggleContacts();
+      this.removeNoties();
+    });
     setTimeout(() => {
       this.refs.messages.scrollTop = this.refs.messages.scrollHeight;
     }, 100);
@@ -83,8 +90,8 @@ export default class Chat extends Component {
   sendMessage = () => {
   	if(this.state.text !== '') {
       const to = this.state.currentChat === 'Group' ? {} : this.state.currentChat;
-  		Meteor.call('messages.send', Meteor.user(), to, this.state.text, this.state.conversation._id, (err, res) => {
-	  		if(err) { console.log(err) } else { this.setState({ text: '' }) }
+  		Meteor.call('messages.send', {_id: Meteor.userId(), name: Meteor.user().name}, to, this.state.text, this.state.conversation._id, (err, res) => {
+	  		if(err) { console.log(err) } else { this.setState({ text: '' }, this.removeNoties) }
 	  	});
 	  	this.fly();
   	}
@@ -103,14 +110,46 @@ export default class Chat extends Component {
   	}, 650);
   }
 
+  getUnread = (id, type) => {
+    let num = 0
+    if(type === 'group') {
+      const convo = this.props.conversations.filter(convo => convo.type === 'group');
+      if(convo.length) {
+        for(let i = 0; i<this.props.unread.length; i++) {
+          if(this.props.unread[i] === convo[0]._id) num++;
+        }
+      }
+    } else {
+      const convo = this.props.conversations.filter(convo => convo.type !== 'group' && convo.owners.indexOf(id) !== -1);
+      if(convo.length) {
+        for(let i = 0; i<this.props.unread.length; i++) {
+          if(this.props.unread[i] ===  convo[0]._id) num++
+        }
+      } 
+    }
+    return num;
+  }
+
+  removeNoties = () => {
+    Meteor.call('user.removeNew', this.state.conversation._id, (err, res) => {
+      if(err) console.log(err);
+    });
+  }
+
   render = () => {
+    const g = this.getUnread('farts', 'group');
     return (
     	<section className={this.props.classes}>
     		<div>
     			<header className="chat-header">
     				<div>
     					<button
-    						onClick={this.toggleContacts}></button>
+    						onClick={this.toggleContacts}>
+                {
+                  this.props.unread.length > 0 &&
+                  <div className='indic'>{this.props.unread.length}</div>
+                }
+              </button>
     					<h3>{this.state.currentChat === 'Group' ? 'Group' : this.state.currentChat.name}</h3>
     					<button
     						onClick={this.props.toggleChat}></button>
@@ -160,17 +199,34 @@ export default class Chat extends Component {
     					<div
     						data-chat='Group' 
     						className='manager-contact mc-group'
-    						onClick={this.changeChat}>Group</div>
+    						onClick={this.changeChat}
+                style={{
+                  background: g > 0 ? '#fff' : 'transparent'
+                }}>
+                Group
+                {
+                  g > 0 &&
+                  <div className='indic'>{g}</div>
+                }
+              </div>
     					{
     						this.state.managers.map((guy, i) => {
+                  const num = this.getUnread(guy._id, 'private');
     							return (
     								<div 
     									key={i} 
     									data-chat={guy.name}
                       data-id={guy._id}
     									className='manager-contact'
-    									onClick={this.changeChat}>
+    									onClick={this.changeChat}
+                      style={{
+                        background: num > 0 ? '#fff' : 'transparent'
+                      }}>
     									{guy.name}
+                      {
+                        num > 0 &&
+                        <div className='indic'>{num}</div>
+                      }
     								</div>
     							);
     						})

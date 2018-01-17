@@ -7,6 +7,7 @@ const ExpenseCircle = (props) => {
 	perc = isNaN(perc) ? 0 : perc;
 	let graphVal = perc === 0 ? 1 : perc;
 	graphVal = (Math.PI * (2 * 200)) - (graphVal*(Math.PI * (2 * 200))) / 100;
+	const rotateVal = (graphVal*360)/100;
 	return (
     <div className='circle'>
 			<div 
@@ -43,6 +44,16 @@ const ExpenseCircle = (props) => {
 							strokeDashoffset: props.active ? graphVal : (Math.PI * (2 * 199))
 						}} />
 				</svg>
+				<img 
+					src='ticks.png'
+					style={{
+						transform: props.active ? `rotate(${-1 * rotateVal}deg)` : 'rotate(0deg)'
+					}} />
+				<img 
+					src='ticks.png'
+					style={{
+						transform: props.active ? `rotate(${rotateVal}deg)` : 'rotate(0deg)'
+					}} />
 				<div 
 					className="title"
 					style={{

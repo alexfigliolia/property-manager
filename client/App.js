@@ -13,6 +13,7 @@ export default class App extends Component {
       properties: [],
       rentPayments: [],
       issues: [],
+      unread: []
     }
     this.loader = document.getElementById('appLoader');
   }
@@ -37,7 +38,8 @@ export default class App extends Component {
         loginClasses: 'login login-visible logged-in',
         properties: nextProps.properties,
         rentPayments: nextProps.payments,
-        issues: nextProps.issues
+        issues: nextProps.issues,
+        unread: nextProps.user.unread
       });
     }
     if(this.loader) {
@@ -61,7 +63,8 @@ export default class App extends Component {
             issues={this.state.issues}
             payments={this.state.rentPayments}
             messages={this.props.messages}
-            conversations={this.props.conversations} />
+            conversations={this.props.conversations}
+            unread={this.state.unread} />
         }
 
       </div>
