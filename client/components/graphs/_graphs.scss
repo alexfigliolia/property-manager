@@ -59,7 +59,7 @@
 					background: transparent;
 					@include center;
 					flex-direction: column;
-					z-index: 4;
+					z-index: 11;
 					&>h3,h4,h5,h4>span {
 						margin: 0;
 						font-weight: 200;
