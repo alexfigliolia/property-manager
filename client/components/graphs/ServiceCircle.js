@@ -1,5 +1,6 @@
 import React from 'react';
 import CountUp from 'react-countup';
+import Ticks from './Ticks';
 
 const ServiceCircle = (props) => {
 	let graphVal;
@@ -18,6 +19,7 @@ const ServiceCircle = (props) => {
 				onClick={props.showService}
 				className='circ'>
 				<svg 
+					className='circle-container'
 					viewBox="0 0 500 500" 
 					preserveAspectRatio="xMinYMin meet"
 					style={{
@@ -48,16 +50,16 @@ const ServiceCircle = (props) => {
 							strokeDashoffset: props.active ? (Math.PI * (2 * graphVal)) : (Math.PI * (2 * 199))
 						}} />
 				</svg>
-				<img 
-					src='ticks.png'
-					style={{
-						transform: props.active ? `rotate(${-1 * rotateVal}deg)` : 'rotate(0deg)'
-					}} />
-				<img 
-					src='ticks.png'
-					style={{
-						transform: props.active ? `rotate(${rotateVal}deg)` : 'rotate(0deg)'
-					}} />
+				<Ticks 
+					id='serviceLines'
+					color={props.color}
+					active={props.active}
+					rotation={rotateVal} />
+				<Ticks 
+					id='serviceLines2'
+					color={props.color}
+					active={props.active}
+					rotation={-1 * (rotateVal/2)} />
 				<div 
 					className="title"
 					style={{

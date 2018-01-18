@@ -21,19 +21,10 @@
 				width: 100%;
 				padding-bottom: 100%;
 				cursor: pointer;
-				&>img {
-					position: absolute;
-					top: 12.5%; left: 12.5%;
-					height: 75%; width: 75%;
-					z-index: 1;
-					transition-timing-function: cubic-bezier(0.99, 0.01, 0.62, 0.94);
-					transition: transform 0.8s 0.15s;
-					&:last-of-type {
-						top: 17.5%; left: 17.5%;
-						height: 65%; width: 65%;
-					}
-				}
-				&>svg {
+				background: transparent;
+				// background: url('ticks.png') no-repeat center;
+				// background-size: 75% 75%;
+				&>.circle-container {
 					@include center;
 					position: absolute;
 					top: 0%;
@@ -48,15 +39,28 @@
 						transition: stroke-dashoffset 0.8s 0.15s, stroke-dasharray 0.8s 0.15s;
 					}
 				}
+				&>.ticks {
+					position: absolute;
+					background: transparent;
+					z-index: 5;
+					top: 12.5%; left: 12.5%;
+					height: 75%; width: 75%;
+					opacity: 0.25;
+					transition-timing-function: cubic-bezier(0.99, 0.01, 0.62, 0.94);
+					transition: transform 0.8s 0.15s;
+					&:last-of-type {
+						top: 17.5%; left: 17.5%;
+						height: 65%; width: 65%;
+					}
+				}
 				&>.title {
 					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
+					top: 0; left: 0;
+					width: 100%; height: 100%;
 					text-align: center;
 					font-weight: 200;
 					color: #fff;
+					background: transparent;
 					@include center;
 					flex-direction: column;
 					z-index: 4;

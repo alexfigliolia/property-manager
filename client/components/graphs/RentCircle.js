@@ -1,5 +1,6 @@
 import React from 'react';
 import CountUp from 'react-countup';
+import Ticks from './Ticks';
 
 const RentCircle = (props) => {
 	let graphVal;
@@ -20,7 +21,7 @@ const RentCircle = (props) => {
 				className='circ'
 				onClick={props.showRent}>
 				<svg
-					onMouseEnter={this.toggleShadow} 
+					className='circle-container'
 					viewBox="0 0 500 500" 
 					preserveAspectRatio="xMinYMin meet"
 					style={{
@@ -53,16 +54,16 @@ const RentCircle = (props) => {
 							strokeDashoffset: sdo
 						}} />
 				</svg>
-				<img 
-					src='ticks.png'
-					style={{
-						transform: props.active ? `rotate(${-1 * rotateVal}deg)` : 'rotate(0deg)'
-					}} />
-				<img 
-					src='ticks.png'
-					style={{
-						transform: props.active ? `rotate(${rotateVal}deg)` : 'rotate(0deg)'
-					}} />
+				<Ticks 
+					id='rentLines'
+					color={props.color}
+					active={props.active}
+					rotation={rotateVal} />
+				<Ticks 
+					id='rentLines2'
+					color={props.color}
+					active={props.active}
+					rotation={-1 * (rotateVal/2)} />
 				<div 
 					className="title"
 					style={{

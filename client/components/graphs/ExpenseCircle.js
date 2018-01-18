@@ -1,5 +1,6 @@
 import React from 'react';
 import CountUp from 'react-countup';
+import Ticks from './Ticks';
 
 const ExpenseCircle = (props) => {
 	const spent = props.data.reduce((acc, cur) => acc + parseFloat(cur.solution.spent), 0);
@@ -14,6 +15,7 @@ const ExpenseCircle = (props) => {
 				className='circ'
 				onClick={props.showExpenses}>
 				<svg 
+					className='circle-container'
 					viewBox="0 0 500 500" 
 					preserveAspectRatio="xMinYMin meet"
 					style={{
@@ -44,16 +46,16 @@ const ExpenseCircle = (props) => {
 							strokeDashoffset: props.active ? graphVal : (Math.PI * (2 * 199))
 						}} />
 				</svg>
-				<img 
-					src='ticks.png'
-					style={{
-						transform: props.active ? `rotate(${-1 * rotateVal}deg)` : 'rotate(0deg)'
-					}} />
-				<img 
-					src='ticks.png'
-					style={{
-						transform: props.active ? `rotate(${rotateVal}deg)` : 'rotate(0deg)'
-					}} />
+				<Ticks 
+					id='expenseLines'
+					color={props.color}
+					active={props.active}
+					rotation={-1 * (rotateVal/2)} />
+				<Ticks 
+					id='expenseLines2'
+					color={props.color}
+					active={props.active}
+					rotation={rotateVal} />
 				<div 
 					className="title"
 					style={{
