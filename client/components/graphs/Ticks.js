@@ -11,7 +11,7 @@ const Ticks = (props) => {
 		  <defs>
 		    <g 
 		    	id={props.id} 
-		    	stroke={props.color} 
+		    	stroke='#222D3F'
 		    	strokeWidth='3' 
 		    	strokeLinecap='round'>
 		      <line x1=" 71" x2=" 77" />

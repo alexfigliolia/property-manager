@@ -1,5 +1,6 @@
 import React from 'react';
 import CountUp from 'react-countup';
+import BaseCircle from './BaseCircle';
 import Ticks from './Ticks';
 
 const ExpenseCircle = (props) => {
@@ -8,7 +9,7 @@ const ExpenseCircle = (props) => {
 	perc = isNaN(perc) ? 0 : perc;
 	let graphVal = perc === 0 ? 1 : perc;
 	graphVal = (Math.PI * (2 * 200)) - (graphVal*(Math.PI * (2 * 200))) / 100;
-	const rotateVal = (graphVal*360)/100;
+	const rotateVal = (graphVal*360)/(Math.PI * (2 * 200));
 	return (
     <div className='circle'>
 			<div 
@@ -19,20 +20,13 @@ const ExpenseCircle = (props) => {
 					viewBox="0 0 500 500" 
 					preserveAspectRatio="xMinYMin meet"
 					style={{
-						filter: `drop-shadow( 0px 0px 7.5px ${props.color})`
+						filter: props.active ? `drop-shadow( 0px 0px 5px ${props.color})` : `drop-shadow( 0px 0px 5px transparent)`
 					}}>
 					<linearGradient id="expenseGrad">
             <stop offset="0%"  stopColor={props.color2} />
             <stop offset="100%" stopColor={props.color} />
 	        </linearGradient>
-					<circle
-						stroke="#1A222E"
-						strokeWidth="20" 
-						fill='transparent' 
-						cx="250" 
-						cy="250" 
-						r="200"
-						strokeLinecap="round" />
+					<BaseCircle />
 					<circle
 						stroke="url(#expenseGrad)"
 						strokeWidth="20" 
@@ -50,12 +44,12 @@ const ExpenseCircle = (props) => {
 					id='expenseLines'
 					color={props.color}
 					active={props.active}
-					rotation={-1 * (rotateVal/2)} />
+					rotation={(rotateVal/2)} />
 				<Ticks 
 					id='expenseLines2'
 					color={props.color}
 					active={props.active}
-					rotation={rotateVal} />
+					rotation={-1 * (rotateVal/2)} />
 				<div 
 					className="title"
 					style={{

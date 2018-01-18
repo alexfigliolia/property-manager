@@ -1,5 +1,6 @@
 import React from 'react';
 import CountUp from 'react-countup';
+import BaseCircle from './BaseCircle';
 import Ticks from './Ticks';
 
 const RentCircle = (props) => {
@@ -25,7 +26,7 @@ const RentCircle = (props) => {
 					viewBox="0 0 500 500" 
 					preserveAspectRatio="xMinYMin meet"
 					style={{
-						filter: `drop-shadow( 0px 0px 7.5px ${props.color})`
+						filter: props.active ? `drop-shadow( 0px 0px 5px ${props.color})` : `drop-shadow( 0px 0px 5px transparent)`
 					}}>
 					<defs>
 		        <linearGradient id="rentGrad">
@@ -33,14 +34,7 @@ const RentCircle = (props) => {
 	            <stop offset="100%" stopColor={props.color} />
 		        </linearGradient>
 			    </defs>
-					<circle
-						stroke="#1A222E"
-						strokeWidth="20" 
-						fill='transparent' 
-						cx="250" 
-						cy="250" 
-						r="200"
-						strokeLinecap="round" />
+					<BaseCircle />
 					<circle
 						stroke="url(#rentGrad)"
 						strokeWidth="20" 
@@ -63,7 +57,7 @@ const RentCircle = (props) => {
 					id='rentLines2'
 					color={props.color}
 					active={props.active}
-					rotation={-1 * (rotateVal/2)} />
+					rotation={-1 * (360 - (rotateVal/2))} />
 				<div 
 					className="title"
 					style={{
