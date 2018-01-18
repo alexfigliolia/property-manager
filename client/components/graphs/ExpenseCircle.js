@@ -1,7 +1,7 @@
 import React from 'react';
 import CountUp from 'react-countup';
 import BaseCircle from './BaseCircle';
-import Ticks from './Ticks';
+import TopCircle from './TopCircle';
 
 const ExpenseCircle = (props) => {
 	const spent = props.data.reduce((acc, cur) => acc + parseFloat(cur.solution.spent), 0);
@@ -20,41 +20,33 @@ const ExpenseCircle = (props) => {
 					viewBox="0 0 500 500" 
 					preserveAspectRatio="xMinYMin meet"
 					style={{
-						filter: props.active ? `drop-shadow( 0px 0px 5px ${props.color})` : `drop-shadow( 0px 0px 5px transparent)`
+						filter: `drop-shadow( 0px 0px 7.5px ${props.color})`
 					}}>
 					<linearGradient id="expenseGrad">
             <stop offset="0%"  stopColor={props.color2} />
             <stop offset="100%" stopColor={props.color} />
 	        </linearGradient>
 					<BaseCircle />
-					<circle
-						stroke="url(#expenseGrad)"
-						strokeWidth="20" 
-						fill='transparent' 
-						cx="250" 
-						cy="250" 
-						r="200"
-						strokeLinecap="round"
-						style={{
-							strokeDasharray: (Math.PI * (2 * 200)),
-							strokeDashoffset: props.active ? graphVal : (Math.PI * (2 * 199))
-						}} />
+					<TopCircle 
+						gradient="url(#expenseGrad)"
+						sdo={props.active ? graphVal : (Math.PI * (2 * 199))} />
 				</svg>
-				<Ticks 
-					id='expenseLines'
-					color={props.color}
-					active={props.active}
-					rotation={(rotateVal/2)} />
-				<Ticks 
-					id='expenseLines2'
-					color={props.color}
-					active={props.active}
-					rotation={-1 * (rotateVal/2)} />
+				<img 
+					src='ticks.png' 
+					alt='ticks'
+					style={{
+						transform: props.active ? `rotate(${rotateVal}deg)` : `rotate(0deg)`
+					}} />
+				<img 
+					src='ticks.png' 
+					alt='ticks'
+					style={{
+						transform: props.active ? `rotate(${-1 * rotateVal}deg)` : `rotate(0deg)`,
+						boxShadow: `inset 0px 0px 5px ${props.color}`
+					}} />
 				<div 
 					className="title"
-					style={{
-						color: props.color
-					}}>
+					style={{ color: props.color }}>
 					<h3>Expenses</h3>
 					<h4>
 						<CountUp

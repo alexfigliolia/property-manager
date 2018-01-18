@@ -1,7 +1,7 @@
 import React from 'react';
 import CountUp from 'react-countup';
 import BaseCircle from './BaseCircle';
-import Ticks from './Ticks';
+import TopCircle from './TopCircle';
 
 const ServiceCircle = (props) => {
 	let graphVal;
@@ -24,41 +24,33 @@ const ServiceCircle = (props) => {
 					viewBox="0 0 500 500" 
 					preserveAspectRatio="xMinYMin meet"
 					style={{
-						filter: props.active ? `drop-shadow( 0px 0px 5px ${props.color})` : `drop-shadow( 0px 0px 5px transparent)`
+						filter: `drop-shadow( 0px 0px 7.5px ${props.color})`
 					}}>
 					<linearGradient id="serviceGrad">
             <stop offset="0%"  stopColor={props.color2} />
             <stop offset="100%" stopColor={props.color} />
 	        </linearGradient>
 					<BaseCircle />
-					<circle
-						stroke="url(#serviceGrad)"
-						strokeWidth="20"
-						fill='transparent' 
-						cx="250" 
-						cy="250" 
-						r="200"
-						strokeLinecap="round"
-						style={{
-							strokeDasharray: (Math.PI * (2 * 200)),
-							strokeDashoffset: props.active ? (Math.PI * (2 * graphVal)) : (Math.PI * (2 * 199))
-						}} />
+					<TopCircle
+						gradient="url(#serviceGrad)"
+						sdo={props.active ? (Math.PI * (2 * graphVal)) : (Math.PI * (2 * 199))} />
 				</svg>
-				<Ticks 
-					id='serviceLines'
-					color={props.color}
-					active={props.active}
-					rotation={rotateVal} />
-				<Ticks 
-					id='serviceLines2'
-					color={props.color}
-					active={props.active}
-					rotation={-1 * (rotateVal/2)} />
+				<img 
+					src='ticks.png' 
+					alt='ticks'
+					style={{
+						transform: props.active ? `rotate(${rotateVal}deg)` : `rotate(0deg)`,
+					}} />
+				<img 
+					src='ticks.png' 
+					alt='ticks'
+					style={{
+						transform: props.active ? `rotate(${-1 * rotateVal}deg)` : `rotate(0deg)`,
+						boxShadow: `inset 0px 0px 5px ${props.color}`
+					}} />
 				<div 
 					className="title"
-					style={{
-						color: props.color
-					}}>
+					style={{ color: props.color }}>
 					<h3>Service</h3>
 					<h4>
 						<CountUp

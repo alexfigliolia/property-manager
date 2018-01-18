@@ -13,7 +13,7 @@
 			height: auto;
 			&:last-of-type {
 				margin-left: 25%;
-				margin-top: -10%;
+				margin-top: -7.5%;
 			}
 			&>.circ {
 				@include center;
@@ -22,8 +22,6 @@
 				padding-bottom: 100%;
 				cursor: pointer;
 				background: transparent;
-				// background: url('ticks.png') no-repeat center;
-				// background-size: 75% 75%;
 				&>.circle-container {
 					@include center;
 					position: absolute;
@@ -34,23 +32,18 @@
 					transform: rotate(-90deg);
 					background: transparent;
 					z-index: 3;
-					z-index: -1;
-					transition: filter 0.8s 0.9s;
 					&>circle {
 						transition-timing-function: cubic-bezier(0.99, 0.01, 0.62, 0.94);
 						transition: stroke-dashoffset 0.8s 0.15s, stroke-dasharray 0.8s 0.15s;
 					}
 				}
-				&>.ticks {
+				&>img {
 					position: absolute;
-					background: transparent;
-					z-index: -1;
 					top: 12.5%; left: 12.5%;
 					height: 75%; width: 75%;
-					opacity: 1;
-					transition-timing-function: cubic-bezier(0.99, 0.01, 0.62, 0.94);
 					transition: transform 0.8s 0.15s;
-					@include center;
+					z-index: 10;
+					border-radius: 50%;
 					&:last-of-type {
 						top: 17.5%; left: 17.5%;
 						height: 65%; width: 65%;

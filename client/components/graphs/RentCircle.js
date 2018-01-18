@@ -1,7 +1,7 @@
 import React from 'react';
 import CountUp from 'react-countup';
 import BaseCircle from './BaseCircle';
-import Ticks from './Ticks';
+import TopCircle from './TopCircle';
 
 const RentCircle = (props) => {
 	let graphVal;
@@ -26,7 +26,7 @@ const RentCircle = (props) => {
 					viewBox="0 0 500 500" 
 					preserveAspectRatio="xMinYMin meet"
 					style={{
-						filter: props.active ? `drop-shadow( 0px 0px 5px ${props.color})` : `drop-shadow( 0px 0px 5px transparent)`
+						filter: `drop-shadow( 0px 0px 7.5px ${props.color})`
 					}}>
 					<defs>
 		        <linearGradient id="rentGrad">
@@ -35,34 +35,26 @@ const RentCircle = (props) => {
 		        </linearGradient>
 			    </defs>
 					<BaseCircle />
-					<circle
-						stroke="url(#rentGrad)"
-						strokeWidth="20" 
-						fill='transparent' 
-						cx="250" 
-						cy="250" 
-						r="200"
-						strokeLinecap="round"
-						style={{
-							strokeDasharray: (Math.PI * (2 * 200)),
-							strokeDashoffset: sdo
-						}} />
+					<TopCircle
+						gradient="url(#rentGrad)"
+						sdo={sdo} />
 				</svg>
-				<Ticks 
-					id='rentLines'
-					color={props.color}
-					active={props.active}
-					rotation={rotateVal} />
-				<Ticks 
-					id='rentLines2'
-					color={props.color}
-					active={props.active}
-					rotation={-1 * (360 - (rotateVal/2))} />
+				<img 
+					src='ticks.png' 
+					alt='ticks'
+					style={{
+						transform: props.active ? `rotate(${rotateVal}deg)` : `rotate(0deg)`
+					}} />
+				<img 
+					src='ticks.png' 
+					alt='ticks'
+					style={{
+						transform: props.active ? `rotate(${-1 * rotateVal}deg)` : `rotate(0deg)`,
+						boxShadow: `inset 0px 0px 5px ${props.color}`
+					}} />
 				<div 
 					className="title"
-					style={{
-						color: props.color
-					}}>
+					style={{ color: props.color }}>
 					<h3>Rent</h3>
 					<h4>
 						<CountUp

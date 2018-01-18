@@ -3,7 +3,7 @@ import React from 'react';
 const BaseCircle = (props) => {
 	return (
 		<circle
-			stroke="#222D3F"
+			stroke="#19202D"
 			strokeWidth="20" 
 			fill='transparent' 
 			cx="250" 
