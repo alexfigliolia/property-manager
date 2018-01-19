@@ -22,6 +22,7 @@
 				padding-bottom: 100%;
 				cursor: pointer;
 				background: transparent;
+				border-radius: 50%;
 				&>.circle-container {
 					@include center;
 					position: absolute;
@@ -44,6 +45,12 @@
 					transition: transform 0.8s 0.15s;
 					z-index: 10;
 					border-radius: 50%;
+					padding: 2.5px;
+					box-sizing: border-box;
+					&:last-of-type {
+						top: 17.5%; left: 17.5%;
+						height: 65%; width: 65%;
+					}
 				}
 				&>.title {
 					position: absolute;
@@ -68,7 +75,7 @@
 					&>h4 {
 						font-size: 4vh;
 						color: #fff;
-						color: #527BC6;
+						color: $purple;
 					}
 				}
 			}

@@ -41,6 +41,12 @@ const ServiceCircle = (props) => {
 					style={{
 						transform: props.active ? `rotate(${rotateVal}deg)` : `rotate(0deg)`,
 					}} />
+				<img 
+					src='ticks.png' 
+					alt='ticks'
+					style={{
+						transform: props.active ? `rotate(${-1*rotateVal}deg)` : `rotate(0deg)`
+					}} />
 				<div 
 					className="title"
 					style={{ color: props.color }}>
