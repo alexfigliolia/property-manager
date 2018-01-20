@@ -16,7 +16,7 @@ export default class Chat extends Component {
   }
 
   componentDidMount = () => {
-		this.setState({ conversation: this.props.conversations[0] });
+		this.setState({ conversation: this.props.conversations[0], currentChat: {name: 'Group'}});
 		setTimeout(() => {
   		this.refs.messages.scrollTop = this.refs.messages.scrollHeight;
   	}, 200);
@@ -27,7 +27,6 @@ export default class Chat extends Component {
   		this.refs.messages.scrollTop = this.refs.messages.scrollHeight;
   	}, 100);
     if(nextProps.conversations.length > 0 && nextProps.conversations !== this.props.conversations) {
-      this.setState({currentChat: 'Group', conversation: this.props.conversations[0]});
       this.getGroup(nextProps.conversations);
     }
     if(nextProps.classes === 'chat chat-show' &&
@@ -64,33 +63,38 @@ export default class Chat extends Component {
   }
 
   changeChat = (e) => {
-  	const cc = e.target.dataset.chat;
-    const id = e.target.dataset.id;
+    const { chat, id } = e.target.dataset;
   	let convo;
-  	if(cc === 'Group') {
+  	if(chat === 'Group') {
   		convo = this.props.conversations.filter(con => con.type === 'group');
+      this.setState({
+        currentChat: {name: 'Group'},
+        conversation: convo[0]
+      }, this.closeDrawer);
   	} else {
   		convo = this.props.conversations.filter(con => {
   			return con.type !== 'group' && 
   						 con.owners.indexOf(Meteor.userId()) !== -1 &&
   						 con.owners.indexOf(id) !== -1
   		});
+      this.setState({
+        currentChat: {name: chat, _id: id},
+        conversation: convo[0]
+      }, this.closeDrawer);
   	}
-  	this.setState({
-  		currentChat: {name: cc, _id: id},
-  		conversation: convo[0]
-  	}, () => {
-      this.toggleContacts();
-      this.removeNoties();
-    });
     setTimeout(() => {
       this.refs.messages.scrollTop = this.refs.messages.scrollHeight;
     }, 100);
   }
 
+  closeDrawer = () => {
+    this.toggleContacts();
+    this.removeNoties();
+  }
+
   sendMessage = () => {
   	if(this.state.text !== '') {
-      const to = this.state.currentChat.name === 'Group' ? {} : this.state.currentChat;
+      const to = this.state.conversation.type === 'group' ? {} : this.state.currentChat;
   		Meteor.call('messages.send', {_id: Meteor.userId(), name: Meteor.user().name}, to, this.state.text, this.state.conversation._id, (err, res) => {
 	  		if(err) { console.log(err) } else { this.setState({ text: '' }, this.removeNoties) }
 	  	});

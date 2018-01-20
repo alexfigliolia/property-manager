@@ -30,7 +30,7 @@ export default class App extends Component {
 
   componentWillReceiveProps = (nextProps) => {
     console.log(nextProps);
-    if(nextProps.user === null || nextProps.id === null) {
+    if(nextProps.user === null || nextProps.id === null || nextProps.user.roll !== 'manager') {
       this.setState({ 
         loggedIn: false,
         loginClasses: 'login login-visible'
