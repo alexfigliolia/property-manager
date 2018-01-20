@@ -12,6 +12,7 @@ import CollectPay from '../collectPay/CollectPay';
 import HistoricalData from '../historicalData/HistoricalData';
 import Paybill from '../paybill/Paybill';
 import Menu from '../menu/Menu';
+import Toast from '../toast/Toast';
 import { checkDate } from '../../../helpers/helpers';
 
 export default class Dashboard extends Component {
@@ -34,7 +35,7 @@ export default class Dashboard extends Component {
       paybillClasses: 'paybill',
       chatClasses: 'chat',
       currentIssueId: '',
-      menuClasses: 'menu'
+      menuClasses: 'menu',
   	}
   	this.flkty = null;
   }
@@ -370,6 +371,12 @@ export default class Dashboard extends Component {
           collectRent={this.collectPayShow}
           addService={this.showAddService}
           paybill={this.paybill} />
+
+        {/*<Toast 
+          classes={this.props.classes}
+          title={this.props.title}
+          message={this.props.message}
+          dismissToast={this.props.dismissToast} />*/}
 
     	</section>  
     );

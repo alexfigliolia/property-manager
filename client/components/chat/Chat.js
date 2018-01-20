@@ -89,7 +89,7 @@ export default class Chat extends Component {
 
   sendMessage = () => {
   	if(this.state.text !== '') {
-      const to = this.state.currentChat === 'Group' ? {} : this.state.currentChat;
+      const to = this.state.currentChat.name === 'Group' ? {} : this.state.currentChat;
   		Meteor.call('messages.send', {_id: Meteor.userId(), name: Meteor.user().name}, to, this.state.text, this.state.conversation._id, (err, res) => {
 	  		if(err) { console.log(err) } else { this.setState({ text: '' }, this.removeNoties) }
 	  	});

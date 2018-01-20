@@ -8,7 +8,6 @@ export default class Login extends Component {
 		this.state = {
 			newUser: false,
 			loginErrors: "",
-			height: window.innerHeight,
 			buttonClasses: "",
 			lastStep: false,
 			email: '',
@@ -184,7 +183,7 @@ export default class Login extends Component {
 			<div 
 				className={this.props.classes} 
 				id="login" 
-				style={{height: this.state.height}}>
+				style={{height: this.props.height}}>
 				<div>
 					<h1>
 						{

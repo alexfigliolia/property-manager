@@ -3,8 +3,7 @@
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	height: calc(100% - 5px);
-	// background: #fff;
+	height: 100%;
 	@include center;
 	overflow-x: hidden;
 	transform: translateX(100%);

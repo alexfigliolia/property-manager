@@ -13,9 +13,13 @@ export default class App extends Component {
       properties: [],
       rentPayments: [],
       issues: [],
-      unread: []
+      unread: [],
+      toastClasses: 'toast',
+      toastTitle: '',
+      toastMessage: ''
     }
     this.loader = document.getElementById('appLoader');
+    this.text = new Audio("iphone_notification.mp3");
   }
 
   componentDidMount = () => {
@@ -41,6 +45,14 @@ export default class App extends Component {
         issues: nextProps.issues,
         unread: nextProps.user.unread
       });
+      if(this.props.user && 
+        this.props.user.unread && nextProps.user.unread && 
+        nextProps.user.unread.length > this.props.user.unread.length) 
+      {
+        const lastMessage = nextProps.messages[nextProps.messages.length - 1];
+        this.text.play();
+        this.haveAToast(`New message from ${lastMessage.from.name}`, lastMessage.text);
+      }
     }
     if(this.loader) {
       this.loader.classList.add('app-loader-hidden');
@@ -48,12 +60,21 @@ export default class App extends Component {
     }
   }
 
+  haveAToast = (title, message) => {
+    this.setState({toastTitle: title, toastMessage: message, toastClasses: 'toast toast-show'}, () => {
+      setTimeout(this.dimssToast, 4000);
+    });
+  }
+
+  dismissToast = () => this.setState({ toastClasses: 'toast' });
+
   render = () => {
     return (
-      <div className="App">
+      <div className="App" style={{height: this.state.height}}>
 
         <Login 
-          classes={this.state.loginClasses} />
+          classes={this.state.loginClasses}
+          height={this.props.height} />
 
         {
           this.state.loggedIn &&
@@ -64,7 +85,12 @@ export default class App extends Component {
             payments={this.state.rentPayments}
             messages={this.props.messages}
             conversations={this.props.conversations}
-            unread={this.state.unread} />
+            unread={this.state.unread}
+            classes={this.state.toastClasses}
+            title={this.state.toastTitle}
+            message={this.state.toastMessage}
+            haveAToast={this.haveAToast}
+            dismissToast={this.dismissToast} />
         }
 
       </div>

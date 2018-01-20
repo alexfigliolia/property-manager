@@ -40,6 +40,7 @@ Meteor.publish('userData', function() {
         "groupId": 1,
         "_id": 1,
         "unread": 1,
+        "roll": 1
       }
     });
   } else {
