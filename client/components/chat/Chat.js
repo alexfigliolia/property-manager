@@ -26,7 +26,8 @@ export default class Chat extends Component {
   	setTimeout(() => {
   		this.refs.messages.scrollTop = this.refs.messages.scrollHeight;
   	}, 100);
-    if(nextProps.conversations.length > 0) {
+    if(nextProps.conversations.length > 0 && nextProps.conversations !== this.props.conversations) {
+      this.setState({currentChat: 'Group', conversation: this.props.conversations[0]});
       this.getGroup(nextProps.conversations);
     }
     if(nextProps.classes === 'chat chat-show' &&

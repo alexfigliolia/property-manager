@@ -183,7 +183,7 @@ export default class Login extends Component {
 			<div 
 				className={this.props.classes} 
 				id="login" 
-				style={{height: this.props.height}}>
+				style={{height: window.innerHeight}}>
 				<div>
 					<h1>
 						{
